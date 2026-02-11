@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger King Kiosko</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="header-container"></div>
+    
+    <aside id="sidebar-menu" class="sidebar">
+        <div class="sidebar-header">
+            <button id="close-menu" class="btn-icon"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul id="lista-menu-lateral">
+            </ul>
+    </aside>
+    <div id="overlay" class="overlay"></div>
+
+    <section class="titulo-seccion">
+        <h2>NUESTRO MENÚ</h2>
+    </section>
+
+    <main class="catálogo-categorias">
+        
+        <article class="tarjeta-categoria" onclick="cargarSeccion('bebidas')">
+            <img src="secciones/img/bebidas.png" alt="Bebidas">
+            <h3>BEBIDAS</h3>
+        </article>
+
+        <article class="tarjeta-categoria" onclick="cargarSeccion('menus')">
+            <img src="secciones/img/menu.png" alt="Menús">
+            <h3>MENÚS</h3>
+        </article>
+
+        <article class="tarjeta-categoria" onclick="cargarSeccion('complementos')">
+            <img src="secciones/img/complementos.png" alt="Complementos">
+            <h3>COMPLEMENTOS</h3>
+        </article>
+
+        <article class="tarjeta-categoria" onclick="cargarSeccion('king_junior')">
+            <img src="secciones/img/kingjunior.png" alt="King Junior">
+            <h3>KING JUNIOR</h3>
+        </article>
+
+        <article class="tarjeta-categoria" onclick="cargarSeccion('postres')">
+            <img src="secciones/img/postres.png" alt="Postres">
+            <h3>POSTRES</h3>
+        </article>
+
+        <article class="tarjeta-categoria" onclick="cargarSeccion('salsas')">
+            <img src="secciones/img/salsas.png" alt="Salsas">
+            <h3>SALSAS</h3>
+        </article>
+
+    </main>
+
+    <div id="detalle-productos" style="display:none;"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: fuente, 'Arial Black', sans-serif; 
+}
+
+body {
+    background-color: #F5EBDC; /* Color crema de fondo */
+}
+
+/* HEADER (Estilo básico para cuando cargue) */
+.main-header {
+    background-color: white;
+    height: 90px; /* Altura estándar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky; /* Se queda fijo arriba al hacer scroll */
+    top: 0;
+    z-index: 1000;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #502314; /* Marrón BK */
+    cursor: pointer;
+}
+
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: #502314;
+    font-weight: 800; /* Letra gordita */
+    font-size: 0.9rem;
+    text-transform: uppercase; /* Todo mayúsculas */
+}
+
+.desktop-nav a.active {
+    color: #D62300; /* Rojo BK para la opción activa */
+    border-bottom: 3px solid #D62300;
+}
+
+/* --- CENTRO --- */
+.logo-container img {
+    height: 65px; /* Tamaño controlado del logo */
+    display: block;
+}
+
+/* --- DERECHA --- */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Dirección */
+.user-address {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #502314;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.user-address i {
+    font-size: 1.2rem;
+}
+
+.address-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+/* Botones */
+.btn-text {
+    background: none;
+    border: none;
+    color: #502314;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-register {
+    background-color: #D62300; /* Rojo botón */
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px; /* Bordes redondos */
+    font-weight: 900;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-register:hover {
+    background-color: #b51d00;
+}
+
+/* Botón Carrito */
+.btn-cart {
+    background-color: #502314; /* Marrón oscuro */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* BARRA "NUESTRO MENÚ" */
+.titulo-seccion {
+    background-color: #502314; /* El marrón BK */
+    color: #F5EBDC;
+    text-align: center;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+.titulo-seccion h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* CATÁLOGO DE CATEGORÍAS */
+.catálogo-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* TARJETAS */
+.tarjeta-categoria {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.tarjeta-categoria:hover {
+    transform: translateY(-5px); /* Efecto levantar */
+}
+
+.tarjeta-categoria img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.tarjeta-categoria h3 {
+    color: #502314;
+    font-weight: 900;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+@font-face {
+    font-family: fuente;
+    src: url(fuente/fuente.ttf);
+}
+
+/*-------------------------------------------------------------*/
+/*Aqui termina el css el estilo del index basico*/
+
+/* === MENÚ LATERAL (SIDEBAR) === */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; 
+    width: 280px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+    z-index: 2000; /* Por encima de todo */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    left: 0; /* Visible */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #502314; /* Marrón BK */
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.sidebar a:hover {
+    color: #D62300; /* Rojo BK */
+    padding-left: 10px; /* Pequeño desplazamiento */
+}
+
+/* CAPA OSCURA DE FONDO */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1500;
+}
+
+.overlay.active {
+    display: block;
+}
