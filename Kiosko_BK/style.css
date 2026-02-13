@@ -254,3 +254,320 @@ body {
 .overlay.active {
     display: block;
 }
+/* === ESTILOS DE PRODUCTOS (Menús, hamburguesas...) === */
+
+.section-header {
+    text-align: center;
+    margin: 30px 0;
+    color: #502314;
+}
+
+.section-header h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.products-grid {
+    display: grid;
+    /* Cuadrícula responsive: se adapta al ancho de pantalla */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.img-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); /* Sombra realista bajo la burger */
+}
+
+.card-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-info h4 {
+    color: #502314;
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    min-height: 50px; /* Para alinear títulos de 2 líneas */
+}
+
+.price {
+    display: block;
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.btn-add {
+    background-color: #502314; /* Marrón BK */
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    font-weight: 900;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #D62300; /* Rojo al pasar el ratón */
+}
+
+/* =========================================
+   ESTILOS DE LA VENTANA EMERGENTE (MODAL)
+   ========================================= */
+
+/* 1. Fondo Oscuro y Posición */
+.modal-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente */
+    z-index: 3000; /* Por encima de todo */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Efecto borroso de fondo (opcional) */
+}
+
+.modal-overlay.active {
+    display: flex; /* Se activa con JS */
+}
+
+/* 2. La Caja Blanca */
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 600px; /* Un poco más ancho para que quepan bien las opciones */
+    border-radius: 15px;
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Para que no se salga de la pantalla en móviles */
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 3. Cabecera */
+.modal-header {
+    background: #502314; /* Marrón BK */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* 4. Cuerpo con Scroll */
+.modal-body {
+    padding: 20px;
+    overflow-y: auto; /* Permite scroll si hay muchas opciones */
+    flex-grow: 1;
+}
+
+.option-group {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.option-group:last-child {
+    border-bottom: none;
+}
+
+.option-group h4 {
+    margin-bottom: 15px;
+    color: #502314;
+    font-size: 1.1rem;
+}
+
+/* 5. TARJETAS DE OPCIONES (Los botones bonitos) */
+.selection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas por defecto */
+    gap: 12px;
+}
+
+.selection-grid.three-cols {
+    grid-template-columns: 1fr 1fr 1fr; /* 3 columnas para cantidades */
+}
+
+/* Ocultamos el circulito feo del radio button */
+.radio-card input[type="radio"] {
+    display: none;
+}
+
+/* El diseño de la tarjeta */
+.radio-card {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #502314;
+    min-height: 80px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-content strong {
+    font-size: 1.1rem;
+}
+
+.card-content small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+/* Efecto Hover */
+.radio-card:hover {
+    border-color: #D62300;
+    background-color: #fff5f5;
+}
+
+/* ESTADO SELECCIONADO (Cuando está marcado) */
+/* Usamos el selector :has() que funciona en navegadores modernos */
+.radio-card:has(input:checked) {
+    border-color: #D62300;
+    background-color: #D62300;
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(214, 35, 0, 0.3);
+}
+
+/* Fallback para navegadores antiguos que no soportan :has */
+.radio-card input:checked + span {
+    color: inherit; /* Mantiene el color heredado */
+}
+
+/* 6. Select de Bebida */
+#select-bebida {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #502314;
+    cursor: pointer;
+}
+
+#select-bebida:focus {
+    border-color: #D62300;
+    outline: none;
+}
+
+/* 7. Pie de página (Footer) */
+.modal-footer {
+    padding: 20px;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ddd;
+}
+
+.total-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.total-info span:first-child {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: bold;
+}
+
+.big-price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #D62300;
+}
+
+.btn-confirmar {
+    background: #D62300;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 4px 10px rgba(214, 35, 0, 0.3);
+}
+
+.btn-confirmar:hover {
+    background: #b51d00;
+    transform: translateY(-2px);
+}
+
+.btn-confirmar:active {
+    transform: translateY(0);
+}

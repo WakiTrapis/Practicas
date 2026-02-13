@@ -1,0 +1,257 @@
+<div id="modal-producto" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-titulo">Nombre del Menú</h3>
+            <button onclick="cerrarModal()" class="close-btn">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <div id="bloque-siropes" class="option-group" style="display:none;">
+                <h4>🍯 Elige tu sirope:</h4>
+                <div class="selection-grid three-cols">
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_sirope" value="Chocolate" checked onchange="calcularTotal()">
+                        <span>Chocolate</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_sirope" value="Chocolate Blanco" onchange="calcularTotal()">
+                        <span>Choco Blanco</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_sirope" value="Fresa" onchange="calcularTotal()">
+                        <span>Fresa</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_sirope" value="Caramelo" onchange="calcularTotal()">
+                        <span>Caramelo</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_sirope" value="Pistacho" onchange="calcularTotal()">
+                        <span>Pistacho</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_sirope" value="KitKat" onchange="calcularTotal()">
+                        <span>KitKat</span>
+                    </label>
+                </div>
+            </div>
+            <div id="bloque-sabores-fusion" class="option-group" style="display:none;">
+                <h4>🍦 Elige tu sabor:</h4>
+                <div class="selection-grid three-cols">
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_fusion" value="Oreo" checked onchange="calcularTotal()">
+                        <span>Oreo</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_fusion" value="Kit Kat" onchange="calcularTotal()">
+                        <span>Kit Kat</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_fusion" value="Conguito Blanco" onchange="calcularTotal()">
+                        <span>Conguito Blanco</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_fusion" value="Conguito Negro" onchange="calcularTotal()">
+                        <span>Conguito Negro</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_fusion" value="Maxibon" onchange="calcularTotal()">
+                        <span>Maxibon</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="sabor_fusion" value="Dubai" onchange="calcularTotal()">
+                        <span>Dubai (Pistacho)</span>
+                    </label>
+                </div>
+            </div>
+            <div id="bloque-principal-junior" class="option-group" style="display:none;">
+                <h4>🍔 1. Elige tu principal:</h4>
+                <div class="selection-grid three-cols">
+                    <label class="radio-card">
+                        <input type="radio" name="principal_junior" value="Hamburguesa" checked onchange="calcularTotal()">
+                        <span>Hamburguesa</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="principal_junior" value="Cheeseburger" onchange="calcularTotal()">
+                        <span>Cheeseburger</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="principal_junior" value="Nuggets" onchange="calcularTotal()">
+                        <span>6 Nuggets</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="bloque-acompanante-junior" class="option-group" style="display:none;">
+                <h4>🍟 2. Acompañante:</h4>
+                <div class="selection-grid">
+                    <label class="radio-card">
+                        <input type="radio" name="acompanante_junior" value="Patatas" checked onchange="calcularTotal()">
+                        <span>Patatas Pequeñas</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="acompanante_junior" value="Aros" onchange="calcularTotal()">
+                        <span>Aros de Cebolla</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="bloque-bebida-junior" class="option-group" style="display:none;">
+                <h4>🥤 3. Bebida:</h4>
+                <select id="select-bebida-junior" onchange="calcularTotal()">
+                    <option value="Agua">Agua</option>
+                    <option value="Zumo Manzana">Zumo de Manzana</option>
+                    <option value="Zumo Naranja">Zumo de Naranja</option>
+                    <option value="Coca-Cola">Refresco Pequeño</option>
+                </select>
+            </div>
+
+            <div id="bloque-postre-junior" class="option-group" style="display:none;">
+                <h4>🍦 4. Postre:</h4>
+                <select id="select-postre-junior" onchange="calcularTotal()">
+                    <option value="Danonino">Danonino</option>
+                    <option value="Helado">Helado Mini</option>
+                    <option value="Pina">Piña</option>
+                    <option value="Actimel">Actimel</option>
+                </select>
+            </div>
+            <div id="bloque-solo-tamano" class="option-group" style="display:none;">
+                <h4>📏 Elige el tamaño:</h4>
+                <div class="selection-grid">
+                    <label class="radio-card">
+                        <input type="radio" name="solo_tamano" value="Pequeno" onchange="calcularTotal()">
+                        <span>Pequeño</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="solo_tamano" value="Mediano" checked onchange="calcularTotal()">
+                        <span>Mediano (+0,50€)</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="solo_tamano" value="Grande" onchange="calcularTotal()">
+                        <span>Grande (+1,00€)</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="solo_tamano" value="Gigante" onchange="calcularTotal()">
+                        <span>Gigante (+1,50€)</span>
+                    </label>
+                </div>
+            </div>
+            <div id="bloque-unidades" class="option-group" style="display:none;">
+                <h4>🔢 Elige cantidad:</h4>
+                <div class="selection-grid three-cols">
+                    <label class="radio-card">
+                        <input type="radio" name="unidades" value="6" checked onchange="calcularTotal()">
+                        <span>6 Uds.</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="unidades" value="9" onchange="calcularTotal()">
+                        <span>9 Uds. (+1,50€)</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="unidades" value="20" onchange="calcularTotal()">
+                        <span>20 Uds. (+4,00€)</span>
+                    </label>
+                </div>
+            </div>
+            <div id="bloque-tamano" class="option-group">
+                <h4>📏 1. Elige el tamaño:</h4>
+                <div class="selection-grid">
+                    <label class="radio-card">
+                        <input type="radio" name="tamano" value="Mediano" checked onchange="calcularTotal()">
+                        <span class="card-content">
+                            <strong>Mediano</strong>
+                            <small>Sin coste extra</small>
+                        </span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="tamano" value="Grande" onchange="calcularTotal()">
+                        <span class="card-content">
+                            <strong>Grande</strong>
+                            <small>+0,60 €</small>
+                        </span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="tamano" value="Gigante" onchange="calcularTotal()">
+                        <span class="card-content">
+                            <strong>Gigante</strong>
+                            <small>+1,20 €</small>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="bloque-tipo-carne" class="option-group">
+                <h4>🥩 2. ¿Ternera o Pollo?</h4>
+                <div class="selection-grid">
+                    <label class="radio-card">
+                        <input type="radio" name="tipo_carne" value="Ternera" checked onchange="calcularTotal()">
+                        <span>Ternera a la parrilla</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="tipo_carne" value="Pollo" onchange="calcularTotal()">
+                        <span>Pollo Crispy</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="bloque-cantidad-carne" class="option-group">
+                <h4>➕ 3. ¿Cuántas carnes?</h4>
+                <div class="selection-grid three-cols">
+                    <label class="radio-card">
+                        <input type="radio" name="cantidad_carne" value="1" checked onchange="calcularTotal()">
+                        <span>1 Carne</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="cantidad_carne" value="2" onchange="calcularTotal()">
+                        <span>Doble (+1,00€)</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="cantidad_carne" value="3" onchange="calcularTotal()">
+                        <span>Triple (+2,00€)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="bloque-patatas" class="option-group">
+                <h4>🍟 4. Las patatas:</h4>
+                <div class="selection-grid">
+                    <label class="radio-card">
+                        <input type="radio" name="patatas" value="Clasicas" checked onchange="calcularTotal()">
+                        <span>Clásicas</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="patatas" value="Supreme" onchange="calcularTotal()">
+                        <span>Supreme</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="bloque-bebida" class="option-group">
+                <h4>🥤 5. La bebida:</h4>
+                <select id="select-bebida" onchange="calcularTotal()">
+                    <option value="Coca-Cola">Coca-Cola</option>
+                    <option value="Coca-Cola Zero">Coca-Cola Zero</option>
+                    <option value="CocaCola Zero Zero">CocaCola Zero Zero</option>
+                    <option value="Fanta">Fanta Naranja</option>
+                    <option value="Fanta">Fanta Limón</option>
+                    <option value="Agua">Agua Mineral</option>
+                    <option value="Cerveza">Cerveza (+1,00€)</option>
+                    <option value="Trina">Trina</option>
+                    <option value="Monster">Monster Energy</option>
+                    <option value="Fuze Tea">Fuze Tea</option>
+                    <option value="Powerade">Powerade</option>
+                    <option value="Aquarius">Aquarius Naranja</option>
+                    <option value="Aquarius">Aquarius Limón</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="total-info">
+                <span>TOTAL PEDIDO:</span>
+                <span id="precio-final" class="big-price">0.00 €</span>
+            </div>
+            <button class="btn-confirmar" onclick="añadirAlCarrito()">AÑADIR A MI CESTA</button>
+        </div>
+    </div>
+</div>
