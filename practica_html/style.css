@@ -1,0 +1,102 @@
+body{
+    background-image: url('img/fondo.png');
+    display: flex;
+    flex-direction: column;
+}
+.fondo{
+    background-image: url(img/marcotitulo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+    display: flex;
+}
+main{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 250px;
+}
+.titulo{
+    color: rgb(156, 5, 243);
+    font-size: 90px;
+    margin: 60px;
+    font-family: dragon;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+a{
+    text-decoration: none;
+    list-style: none;
+}
+@font-face {
+    font-family: dragon;
+    src: url(font/Dragon.otf);
+}
+
+.foto_tarjeta{
+    background-image: url(img/marcoimg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+}
+.img_juego{
+    max-width: 70%;
+    max-height: 70%;
+}
+.nombre_juego{
+    font-size: 25px;
+    font-family: dragon;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: url(img/marconombre.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+a{
+    text-decoration: none;
+    list-style: none;
+}
+h2{
+    margin-top: 5px;
+    text-decoration: none;
+    color: rgb(156, 5, 243);
+}
+.envoltorio_total{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.tarjeta:hover{
+    transform: scale(1.5) rotate(5deg);
+    transition: transform 0.3s ease;
+}
+
+.tarjeta:hover h2{
+    color: rgb(222, 145, 255);
+    transition: color 0.3s ease;
+}
+
+p{
+    font-size: 50px;
+    font-family: dragon;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 10%;
+    border: 5px solid rgb(156, 5, 243);
+    color: rgb(156, 5, 243);
+    width: 120%;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
