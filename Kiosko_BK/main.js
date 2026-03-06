@@ -126,6 +126,7 @@ function abrirModal(nombre, precio, tipo = 'general') {
         bCantCarne.style.display = 'none';
         bPatatas.style.display = 'none';
         bBebida.style.display = 'none';
+        bPostreJunior.style.display = 'none';
     }
     if (tipo === 'solo_tamano') {
         bSoloTamano.style.display = 'block';
