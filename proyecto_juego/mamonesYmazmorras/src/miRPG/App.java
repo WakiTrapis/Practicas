@@ -51,11 +51,11 @@ public class App {
         System.out.println("¿Que decides hacer?");
         System.out.println("1. Aceptar el porro.");
         System.out.println("2. Rechazarlo y seguir con tu vida normal.");
-        int decision = scanner.nextInt();
+        int decision1 = scanner.nextInt();
         scanner.nextLine(); // Limpiar el buffer
         pausa(3000);
         //Final 1, el jugador rechaza el porro
-        if (decision == 2) {
+        if (decision1 == 2) {
             System.out.println("\nDecides rechazar el porro. El vagabundo te mira con tristeza y se aleja, desapareciendo entre las sombras.");
             pausa(4000);
             System.out.println("Vuelves a casa, pero esa noche no puedes dormir. Sientes que has perdido una oportunidad única.");
@@ -69,7 +69,7 @@ public class App {
             return;
         }
         //pulsa numero no valido, continua con la historia
-        if (decision != 1 && decision != 2) {
+        if (decision1 != 1 && decision1 != 2) {
             System.out.println("\nOpción no válida. El vagabundo se enfurece y te lanza el porro a la cara antes de desaparecer en la oscuridad.");
             pausa(4000);
             System.out.println("Te quedas allí, aturdido, con el porro en la mano. No tienes otra opción que aceptarlo.");
@@ -135,16 +135,16 @@ public class App {
         String nombreJugador = scanner.nextLine();
 
         System.out.println("\n¿Qué actitud vas a tomar ante esta nueva realidad?");
-        System.out.println("1. El 'Hater' (Súper Daño, Poca Defensa)");
-        System.out.println("2. El 'Conformista' (Mucha Cordura y Defensa, Daño Bajo)");
-        System.out.println("3. El 'Tryhard' (Equilibrado, mucho Subidón y Rápido)");
+        System.out.println("1. El 'Hater' (Lo odia todo y a todos. Pega durísimo con ataques de toxicidad pura, pero tiene la piel muy fina)");
+        System.out.println("2. El 'Conformista' (Absorbe el daño y se adapta. Su sentido comun es superior porqué siempre encuentra la forma de conformarse con su situación.)");
+        System.out.println("3. El 'Tryhard' (Se esfuerza demasiado en cada aspecto de su vida. Muy equilibrado, rapidísimo. Pero si algo sale mal, se tiltea a niveles insospechados).");
         System.out.print("Elige tu camino (1-3): ");
         
         int eleccionClase = scanner.nextInt();
         scanner.nextLine(); 
 
         // Creamos la variable vacía (usamos el molde madre)
-        miRPG.Base.GameCharacter mainSelect; 
+        miRPG.Base.MainCharacterBase mainSelect; 
         
         switch(eleccionClase) {
             case 1:
@@ -158,14 +158,63 @@ public class App {
             case 3:
             default:
                 System.out.println("\nHas elegido ser un Tryhard...");
-                // mainSelect = new miRPG.Main_characters.Tryhard(nombreJugador); // (Te dejo a ti crear el archivo Tryhard.java)
-                mainSelect = new miRPG.Main_characters.Hater(nombreJugador); // Temporal hasta que hagas el Tryhard
+                mainSelect = new miRPG.Main_characters.Tryhard(nombreJugador); 
                 break;
         }
+        pausa(3000);
 
         System.out.println("\n[SISTEMA]: Iniciando estadísticas de RPG para " + mainSelect.getNameCharacter() + "...");
+        pausa(3000);
         
-        miRPG.Sistem.SaveManager.guardar(mainSelect);
+        miRPG.System.SaveManager.guardar(mainSelect);
+
+        // --- INTRODUCCIÓN AL MUNDO/ Capítulo 1 ---
+        System.out.println("\nAl momento empiezas a sentir un hambre voraz, no entiendes lo que acaba de pasar pero sabes que tu cuerpo necesita combustible para seguir funcionando.");
+        pausa(4000);
+        System.out.println("\nAbres la puerta de tu habitación. El humo del porro aún flota en el aire.");
+        pausa(4000);
+        System.out.println("Bajas las escaleras para salir a la calle a pillar algo de picar, pero al abrir el portal...");
+        pausa(4000);
+        System.out.println("\nVes a un chaval de tu barrio actuando de forma extraña.");
+        pausa(4000);
+        System.out.println("Está a cuatro patas cerca de los cubos de basura, rascándose la oreja con el pie.");
+        pausa(4000);
+        
+        System.out.println("\n[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Me ha sentado fatal el verde. Estoy alucinando.'");
+        pausa(4000);
+        System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Yo he visto a esta peña en TikTok, pero no creía que la sociedad hubiera caído tan bajo en la vida real...'");
+        pausa(4000);
+        System.out.println("\nEl chaval se gira. Te clava la mirada. Pela los dientes y empieza a gruñir de forma gutural.");
+        pausa(4000);
+        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Eh, colega, ¿estás bien? ¿Te has dejado las llaves ahí tirado o...'");
+        pausa(4000);
+        
+        // --- INICIO DEL COMBATE ---
+        System.out.println("\n¡EL CHAVAL SALTA HACIA TI A CUATRO PATAS!");
+        pausa(4000);
+        
+        miRPG.Enemies.InitiatedTherian primerEnemigo = new miRPG.Enemies.InitiatedTherian();
+        miRPG.System.Combat.startCombat(mainSelect, primerEnemigo);
+        
+        // --- POST-COMBATE (Resolución y revelación de la ruta) ---
+        System.out.println("\nEl chaval gime como un perro apaleado y sale corriendo por la calle.");
+        pausa(4000);
+        System.out.println("Te sacudes el polvo de la ropa. Tu corazón va a mil por hora.");
+        pausa(4000);
+        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Esto... esto no ha sido el porro. Ha sido real.'");
+        pausa(5000);
+        
+        // Aquí viene el giro para los siguientes combates:
+        System.out.println("\nTe asomas a la calle principal para ver a dónde ha ido...");
+        pausa(4000);
+        System.out.println("Y se te hiela la sangre.");
+        pausa(4000);
+        System.out.println("A lo largo de la avenida, ves a más chavales. Algunos subidos a los coches aullando, otros olisqueando farolas.");
+        pausa(4000);
+        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Joder... tengo que llegar hasta el Mercadona, pero la calle está infestada.'");
+        pausa(4000);
+        
+        mainSelect.gainXp(50); // Experiencia de enemigo común
 }
 
     // --- MÉTODO AUXILIAR PARA HACER PAUSAS ---

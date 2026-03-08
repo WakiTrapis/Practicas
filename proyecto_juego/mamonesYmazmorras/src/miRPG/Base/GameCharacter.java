@@ -93,17 +93,29 @@ public abstract class GameCharacter implements Serializable {
     public abstract void attack(GameCharacter target);
 
         //recibir daño
-    public void receiveDamage(double damage){
-        double effectiveDamage = damage - this.stats.getDefense();
+    public void receiveDamage(double damage, boolean esAtaqueEspecial){
+        double effectiveDamage;
+        
+        if (esAtaqueEspecial) {
+            // Si es ataque de Subidón, resta la Defensa Especial
+            effectiveDamage = damage - this.stats.getSpecialDefense();
+            System.out.println("  -> " + this.nameCharacter + " usa su Pasotismo para mitigar el impacto.");
+        } else {
+            // Si es ataque físico, resta la Defensa Normal
+            effectiveDamage = damage - this.stats.getDefense();
+            System.out.println("  -> " + this.nameCharacter + " usa su Defensa Física para mitigar el golpe.");
+        }
+
         if (effectiveDamage < 1) {
             effectiveDamage = 1; // daño mínimo de 1
         }
-        this.currentHealth -= effectiveDamage;
+        
+        this.setCurrentHealth(this.getCurrentHealth() - effectiveDamage);
 
-        if (this.currentHealth < 0) {
-            this.currentHealth = 0;
+        if (this.getCurrentHealth() < 0) {
+            this.setCurrentHealth(0);
         }
-        System.out.println(this.nameCharacter + " ha recibido " + effectiveDamage + " de daño. Cordura actual: " + this.currentHealth);
+        System.out.println(this.nameCharacter + " ha recibido " + effectiveDamage + " de daño. Cordura actual: " + this.getCurrentHealth() + "\n");
     }
 
     //curar

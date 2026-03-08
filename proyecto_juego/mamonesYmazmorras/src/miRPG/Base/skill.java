@@ -7,14 +7,12 @@ public abstract class Skill implements Serializable {
     //atributos
     private String name;
     private String description;
-    private double kiCost;
     private double powerSkill;
 
     //constructor
-    public Skill(String name, String description, double kiCost, double powerSkill) {
+    public Skill(String name, String description, double powerSkill) {
         this.name = name;
         this.description = description;
-        this.kiCost = kiCost;
         this.powerSkill = powerSkill;
     }
 
@@ -24,9 +22,6 @@ public abstract class Skill implements Serializable {
 
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
-
-    public double getKiCost() {return kiCost;}
-    public void setKiCost(double kiCost) {this.kiCost = kiCost;}
 
     public double getPowerSkill() {return powerSkill;}
     public void setPowerSkill(double powerSkill) {this.powerSkill = powerSkill;}

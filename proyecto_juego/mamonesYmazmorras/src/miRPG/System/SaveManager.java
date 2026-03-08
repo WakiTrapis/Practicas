@@ -1,4 +1,4 @@
-package miRPG.Sistema;
+package miRPG.System;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
