@@ -165,7 +165,7 @@ public class App {
 
         System.out.println("\n[SISTEMA]: Iniciando estadísticas de RPG para " + mainSelect.getNameCharacter() + "...");
         
-        miRPG.Sistema.SaveManager.guardar(mainSelect);
+        miRPG.Sistem.SaveManager.guardar(mainSelect);
 }
 
     // --- MÉTODO AUXILIAR PARA HACER PAUSAS ---
