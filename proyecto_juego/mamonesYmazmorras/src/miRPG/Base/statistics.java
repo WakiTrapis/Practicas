@@ -1,20 +1,24 @@
 package miRPG.Base;
 
-public class statistics {
+import java.io.Serializable;
+
+public class Statistics implements Serializable {
 
     //Atributos
-    private double maxHealth;
-    private double power;
-    private double defense;
-    private double lvlKi;
-    private double speed;
+    private double maxHealth; //Cordura
+    private double power; //Fuerza bruta
+    private double defense; //Sentido común
+    private double lvlKi; //Subidón
+    private double speed; //Velocidad neuronal
+
+
     private double lvlPoints;
     private int level;
     private double currentXp;
     private double xpToNextLevel;
 
     //Constructor
-    public statistics(double maxHealth, double power, double defense, double lvlKi, double speed) {
+    public Statistics(double maxHealth, double power, double defense, double lvlKi, double speed) {
         this.maxHealth = maxHealth;
         this.power = power;
         this.defense = defense;

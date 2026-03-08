@@ -1,13 +1,15 @@
 package miRPG.Base;
 
-public abstract class item {
+import java.io.Serializable;
+
+public abstract class Item implements Serializable {
 
     //atributos
     private String name;
     private String description;
 
     //constructor
-    public item(String name, String description) {
+    public Item(String name, String description) {
         this.name = name;
         this.description = description;
     }
@@ -19,7 +21,7 @@ public abstract class item {
     public void setDescription(String description) {this.description = description;}
 
     //metodo abstracto para usar el item
-    public abstract boolean use(character user);
+    public abstract boolean use(GameCharacter user);
 
 
 

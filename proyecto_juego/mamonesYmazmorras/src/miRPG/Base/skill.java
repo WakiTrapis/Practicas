@@ -1,6 +1,8 @@
 package miRPG.Base;
 
-public abstract class skill {
+import java.io.Serializable;
+
+public abstract class Skill implements Serializable {
 
     //atributos
     private String name;
@@ -9,7 +11,7 @@ public abstract class skill {
     private double powerSkill;
 
     //constructor
-    public skill(String name, String description, double kiCost, double powerSkill) {
+    public Skill(String name, String description, double kiCost, double powerSkill) {
         this.name = name;
         this.description = description;
         this.kiCost = kiCost;
@@ -30,6 +32,6 @@ public abstract class skill {
     public void setPowerSkill(double powerSkill) {this.powerSkill = powerSkill;}
 
     //metodo abstracto para usar la habilidad
-    public abstract void use(character user, character target);
+    public abstract void use(GameCharacter user, GameCharacter target);
 
 }
