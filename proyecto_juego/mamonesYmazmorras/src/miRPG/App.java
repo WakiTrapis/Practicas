@@ -130,20 +130,43 @@ public class App {
         System.out.println("El trance ha terminado. Has despertado.\n");
         pausa(3000);
 
-        // --- CREACIÓN DEL PERSONAJE ---
+// --- CREACIÓN DEL PERSONAJE ---
         System.out.print("Introduce tu nombre para empezar tu nueva vida: ");
         String nombreJugador = scanner.nextLine();
 
-        System.out.println("\n[SISTEMA]: Iniciando estadísticas de RPG para " + nombreJugador + "...");
-        pausa(1500);
+        System.out.println("\n¿Qué actitud vas a tomar ante esta nueva realidad?");
+        System.out.println("1. El 'Hater' (Súper Daño, Poca Defensa)");
+        System.out.println("2. El 'Conformista' (Mucha Cordura y Defensa, Daño Bajo)");
+        System.out.println("3. El 'Tryhard' (Equilibrado, mucho Subidón y Rápido)");
+        System.out.print("Elige tu camino (1-3): ");
         
-        // ¡Aquí es donde inicializaremos tu objeto Personaje (El Chaval) en el futuro!
-        // Chaval prota = new Chaval(nombreJugador);
+        int eleccionClase = scanner.nextInt();
+        scanner.nextLine(); 
+
+        // Creamos la variable vacía (usamos el molde madre)
+        miRPG.Base.GameCharacter mainSelect; 
         
-        System.out.println("¡Estás listo para salir a la calle y enfrentarte a la locura!");
+        switch(eleccionClase) {
+            case 1:
+                System.out.println("\nHas elegido ser un Hater...");
+                mainSelect = new miRPG.Main_characters.Hater(nombreJugador); 
+                break;
+            case 2:
+                System.out.println("\nHas elegido ser un Conformista...");
+                mainSelect = new miRPG.Main_characters.Conformist(nombreJugador);
+                break;
+            case 3:
+            default:
+                System.out.println("\nHas elegido ser un Tryhard...");
+                // mainSelect = new miRPG.Main_characters.Tryhard(nombreJugador); // (Te dejo a ti crear el archivo Tryhard.java)
+                mainSelect = new miRPG.Main_characters.Hater(nombreJugador); // Temporal hasta que hagas el Tryhard
+                break;
+        }
+
+        System.out.println("\n[SISTEMA]: Iniciando estadísticas de RPG para " + mainSelect.getNameCharacter() + "...");
         
-        scanner.close();
-    }
+        miRPG.Sistema.SaveManager.guardar(mainSelect);
+}
 
     // --- MÉTODO AUXILIAR PARA HACER PAUSAS ---
     // Este método detiene el programa los milisegundos que le digas
