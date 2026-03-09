@@ -89,14 +89,11 @@ public abstract class GameCharacter implements Serializable {
     
     //combate
 
-        //ataque
-    public abstract void attack(GameCharacter target);
-
         //recibir daño
-    public void receiveDamage(double damage, boolean esAtaqueEspecial){
+    public void receiveDamage(double damage, boolean isSpecial){
         double effectiveDamage;
         
-        if (esAtaqueEspecial) {
+        if (isSpecial) {
             // Si es ataque de Subidón, resta la Defensa Especial
             effectiveDamage = damage - this.stats.getSpecialDefense();
             System.out.println("  -> " + this.nameCharacter + " usa su Sentido común para mitigar el impacto.");

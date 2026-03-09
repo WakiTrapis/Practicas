@@ -135,10 +135,9 @@ public class Combat {
                 selectionSkill = habilidades[huecoAleatorio];
             }
             
-            // (NOTA: Asegúrate de que tu clase Skill tenga métodos como getName() o getDamage())
             System.out.println(enemy.getNameCharacter() + " usa [" + selectionSkill.getName() + "]!");
-            player.receiveDamage(selectionSkill.getPowerSkill(), );
-            
+            player.receiveDamage(selectionSkill.getPowerSkill(), selectionSkill.isSpecial()); // Usamos el poder de la habilidad para el daño
+            } 
         }
 
     private static void pausa(int milisegundos) {

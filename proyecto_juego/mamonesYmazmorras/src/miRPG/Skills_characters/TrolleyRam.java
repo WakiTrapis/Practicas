@@ -3,16 +3,16 @@ package miRPG.Skills_characters;
 import miRPG.Base.GameCharacter;
 import miRPG.Base.Skill;
 
-public class Acceptation extends Skill {
+public class TrolleyRam extends Skill {
     
-        public Acceptation() {
+        public TrolleyRam() {
         // Nombre, Descripción, Daño base (powerSkill)
-        super("Aceptación", "Usa su fuerza para aceptar la situación", 3.0, false); 
+        super("Embestida de carrito", "Lanza un carrito de la compra a gran velocidad", 8.0, false); 
     }
 
     @Override
     public void use(GameCharacter user, GameCharacter target) {
-        System.out.println("\n¡" + user.getNameCharacter() + " acepta la locura de " + target.getNameCharacter() + "!");
+        System.out.println("\n¡" + user.getNameCharacter() + " lanza el carrito de la compra a " + target.getNameCharacter() + "!");
         
         // Calculamos el daño: Poder de la habilidad (3) + El Subidón (Ataque Especial) del atacante
         double totalDamage = this.getPowerSkill() + user.getStats().getPower();

@@ -7,7 +7,7 @@ public class Intensity extends Skill {
     
             public Intensity() {
         // Nombre, Descripción, Daño base (powerSkill)
-        super("Inten-sismo", "onda de intensidad vital", 3.0); 
+        super("Inten-sismo", "onda de intensidad vital", 3.0,true); 
     }
 
     @Override

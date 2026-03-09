@@ -267,8 +267,6 @@ public class App {
                 pausa(4000);
                 System.out.println("La abre y empieza a esparcirla por el suelo, mientras le habla al chaval.\n");
                 pausa(4000);
-                System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'La loca de los therian a spawneado, jajaja.'\n");
-                pausa(4000);
                 System.out.println("[Mama Therian]: '¡Hola, pequeño! ¿Qué tal estás? ¿Tienes hambre?' \n");
                 pausa(4000);
                 System.out.println("El therian empieza a comer la comida de perro sin ningun problema.\n");

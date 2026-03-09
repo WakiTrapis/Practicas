@@ -9,11 +9,14 @@ public abstract class Skill implements Serializable {
     private String description;
     private double powerSkill;
 
+    private boolean isSpecial;
+
     //constructor
-    public Skill(String name, String description, double powerSkill) {
+    public Skill(String name, String description, double powerSkill, boolean isSpecial) {
         this.name = name;
         this.description = description;
         this.powerSkill = powerSkill;
+        this.isSpecial = isSpecial;
     }
 
     //getters y setters
@@ -25,6 +28,9 @@ public abstract class Skill implements Serializable {
 
     public double getPowerSkill() {return powerSkill;}
     public void setPowerSkill(double powerSkill) {this.powerSkill = powerSkill;}
+
+    public boolean isSpecial() {return isSpecial;}
+    public void setSpecial(boolean isSpecial) {this.isSpecial = isSpecial;}
 
     //metodo abstracto para usar la habilidad
     public abstract void use(GameCharacter user, GameCharacter target);

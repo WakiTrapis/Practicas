@@ -1,18 +1,19 @@
 package miRPG.Skills_characters;
 
-import miRPG.Base.Skill;
 import miRPG.Base.GameCharacter;
+import miRPG.Base.Skill;
 
-public class ToxicComment extends Skill {
-
-    public ToxicComment() {
+public class InvoluntaryRescue extends Skill {
+    
+            public InvoluntaryRescue() {
         // Nombre, Descripción, Daño base (powerSkill)
-        super("Comentario Tóxico", "Lanza una opinión destructiva. No cuesta energía, pero duele.", 3.0,true); 
+        super("Rescate Involuntario", "La obsesion por los animales atrapa al objetivo y le provoca daño psicologico", 6.0, true);
     }
 
     @Override
     public void use(GameCharacter user, GameCharacter target) {
-        System.out.println("\n¡" + user.getNameCharacter() + " suelta un Comentario Tóxico que ofende profundamente a " + target.getNameCharacter() + "!");
+        System.out.println("\n[" + user.getNameCharacter() + "] - Miralo es un animalito, tengo que salvarlo, aunque no quiera...");
+        System.out.println("\n¡" + user.getNameCharacter() + " atrapa a " + target.getNameCharacter() + " y le provoca daño psicológico!");
         
         // Calculamos el daño: Poder de la habilidad (3) + El Subidón (Ataque Especial) del atacante
         double totalDamage = this.getPowerSkill() + user.getStats().getLvlKi();
