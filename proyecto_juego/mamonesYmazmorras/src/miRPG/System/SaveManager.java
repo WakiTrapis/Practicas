@@ -5,15 +5,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
-import miRPG.Base.GameCharacter;
+import miRPG.Base.MainCharacterBase;
 
 public class SaveManager {
     // El nombre del archivo que se creará en tu ordenador
     private static final String ARCHIVO_GUARDADO = "partida.sav";
 
     // --- MÉTODO PARA GUARDAR ---
-    public static void guardar(GameCharacter jugador) {
+    public static void save(MainCharacterBase jugador) {
         // Usamos un try-catch porque al trabajar con archivos puede haber errores (disco lleno, sin permisos, etc.)
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARCHIVO_GUARDADO))) {
             
@@ -29,10 +28,10 @@ public class SaveManager {
     /**
      * @return
      */
-    public static GameCharacter cargar() {
+    public static MainCharacterBase load() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ARCHIVO_GUARDADO))) {
             
-            GameCharacter saveGameCharacter = (GameCharacter) ois.readObject(); // Desempaquetamos
+            MainCharacterBase saveGameCharacter = (MainCharacterBase) ois.readObject(); // Desempaquetamos
             System.out.println("[SISTEMA]: Partida cargada con éxito. ¡Bienvenido de nuevo, " + saveGameCharacter.getNameCharacter() + "!");
             return saveGameCharacter; // Devolvemos el personaje intacto
             

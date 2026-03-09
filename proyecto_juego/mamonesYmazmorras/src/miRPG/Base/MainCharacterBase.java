@@ -7,6 +7,7 @@ public abstract class MainCharacterBase extends GameCharacter {
     private double currentXp;
     private double xpToNextLevel;
     private double lvlPoints;
+    private int progresoHistoria;
 
     public MainCharacterBase(String name, Statistics stats) {
         super(name, stats);
@@ -15,6 +16,7 @@ public abstract class MainCharacterBase extends GameCharacter {
         this.currentXp = 0;
         this.xpToNextLevel = 100;
         this.lvlPoints = 0;
+        this.progresoHistoria = 0;
     }
 
     // Getters y Setters de nivel
@@ -29,6 +31,9 @@ public abstract class MainCharacterBase extends GameCharacter {
 
     public double getLvlPoints() {return lvlPoints;}
     public void setLvlPoints(double lvlPoints) {this.lvlPoints = lvlPoints;}
+
+    public int getProgresoHistoria() { return progresoHistoria; }
+    public void setProgresoHistoria(int progresoHistoria) { this.progresoHistoria = progresoHistoria; }
     
     // --- SISTEMA DE EXPERIENCIA Y SUBIDA DE NIVEL ---
 

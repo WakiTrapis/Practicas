@@ -1,18 +1,18 @@
 package miRPG.Skills_characters;
 
-import miRPG.Base.Skill;
 import miRPG.Base.GameCharacter;
+import miRPG.Base.Skill;
 
-public class ToxicComment extends Skill {
-
-    public ToxicComment() {
+public class Intensity extends Skill {
+    
+            public Intensity() {
         // Nombre, Descripción, Daño base (powerSkill)
-        super("Comentario Tóxico", "Lanza una opinión destructiva. No cuesta energía, pero duele.", 3.0); 
+        super("Inten-sismo", "onda de intensidad vital", 3.0); 
     }
 
     @Override
     public void use(GameCharacter user, GameCharacter target) {
-        System.out.println("\n¡" + user.getNameCharacter() + " suelta un Comentario Tóxico que ofende profundamente a " + target.getNameCharacter() + "!");
+        System.out.println("\n¡" + user.getNameCharacter() + " lanza una onda de intensidad vital contra " + target.getNameCharacter() + "!");
         
         // Calculamos el daño: Poder de la habilidad (3) + El Subidón (Ataque Especial) del atacante
         double totalDamage = this.getPowerSkill() + user.getStats().getLvlKi();

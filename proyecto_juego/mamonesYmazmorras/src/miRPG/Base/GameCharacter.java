@@ -99,7 +99,7 @@ public abstract class GameCharacter implements Serializable {
         if (esAtaqueEspecial) {
             // Si es ataque de Subidón, resta la Defensa Especial
             effectiveDamage = damage - this.stats.getSpecialDefense();
-            System.out.println("  -> " + this.nameCharacter + " usa su Pasotismo para mitigar el impacto.");
+            System.out.println("  -> " + this.nameCharacter + " usa su Sentido común para mitigar el impacto.");
         } else {
             // Si es ataque físico, resta la Defensa Normal
             effectiveDamage = damage - this.stats.getDefense();

@@ -101,15 +101,45 @@ public class Combat {
         }
     }
 
-    // EL NUEVO TURNO DEL ENEMIGO
     private static void enemyTurn(GameCharacter enemy, GameCharacter player) {
         System.out.println("\nEs el turno de " + enemy.getNameCharacter() + "...");
-        pausa(2000);
+        pausa(1000);
+
+        // 1. Sacamos las habilidades del enemigo
+        miRPG.Base.Skill[] habilidades = enemy.getEquippedSkills();
         
-        // Llama al ataque básico programado en la clase del enemigo.
-        enemy.attack(player); 
-        pausa(2000);
-    }
+        // 2. Comprobamos si tiene alguna habilidad equipada
+        boolean tieneHabilidades = false;
+        for (int i = 0; i < habilidades.length; i++) {
+            if (habilidades[i] != null) {
+                tieneHabilidades = true;
+                break; // En cuanto encontramos una, dejamos de buscar
+            }
+        }
+        // 3. DECISIÓN DE LA IA:
+        if (!tieneHabilidades) {
+            // --> CASO A: El primer Therian (o cualquier enemigo sin habilidades)
+            System.out.println(enemy.getNameCharacter() + " se abalanza a lo loco y te araña.");
+            double basicPower = enemy.getStats().getPower();
+            player.receiveDamage(basicPower, false); // Daño básico
+            
+        } else {
+            // --> CASO B: Enemigos avanzados (con 1, 2, 3 o 4 habilidades)
+            java.util.Random rand = new java.util.Random();
+            miRPG.Base.Skill selectionSkill = null;
+            
+            // Este bucle elige un hueco al azar (0 a 3). Si ese hueco está vacío (null), 
+            // vuelve a tirar el dado hasta que acierte en una habilidad que sí exista.
+            while (selectionSkill == null) {
+                int huecoAleatorio = rand.nextInt(4); 
+                selectionSkill = habilidades[huecoAleatorio];
+            }
+            
+            // (NOTA: Asegúrate de que tu clase Skill tenga métodos como getName() o getDamage())
+            System.out.println(enemy.getNameCharacter() + " usa [" + selectionSkill.getName() + "]!");
+            player.receiveDamage(selectionSkill.getPowerSkill(), );
+            
+        }
 
     private static void pausa(int milisegundos) {
         try {
