@@ -1,8 +1,13 @@
 package miRPG;
 
 import java.util.Scanner;
-// Aquí luego importaremos a tu personaje y enemigos
-
+import miRPG.System.*;
+import miRPG.Base.*;
+import miRPG.UtilItem.*;
+import miRPG.Main_characters.*;
+import miRPG.Enemies.*;
+import miRPG.Skills_characters.*;
+import miRPG.System.GameMenu;
 import miRPG.Base.MainCharacterBase;
 
 public class App {
@@ -35,7 +40,7 @@ public class App {
             pausa(5000);
 
             pausa(3000);
-            System.out.println("Te encuentras saliendo tarde del trabajo, todo parece normal, monotono, como todos los dias. ");
+            System.out.println("Te encuentras saliendo tarde del trabajo, todo parece normal, monótono, como todos los días. ");
             pausa(4000);
             System.out.println("Pero de repente...");
             pausa(3000);
@@ -45,11 +50,11 @@ public class App {
             pausa(4000);
             System.out.println("[Vagabundo]: 'Yo invente el scroll infinito!, ellos me obligaron...' - continuó, mientras te arrastraba hacia un callejón oscuro.\n");
             pausa(4000);
-            System.out.println("[Vagabundo]: 'Solo fui una marionata para ellos, cuando quise ponerle el dichoso boton de apagado ya era tarde'\n");
+            System.out.println("[Vagabundo]: 'Solo fui una marioneta para ellos, cuando quise ponerle el dichoso botón de apagado ya era tarde'\n");
             pausa(4000);
             System.out.println("[Vagabundo]: 'Pero tú... tú eres diferente. Tienes el potencial.' - dijo, mientras se saca algo del bolsillo.\n");
             pausa(4000);
-            System.out.println("[Vagabundo]: 'Este porro hara que puedas entenderme. Despierta'.\n");
+            System.out.println("[Vagabundo]: 'Este porro hará que puedas entenderme. Despierta'.\n");
             pausa(4000);
             // --- DECISIÓN DEL JUGADOR ---
             System.out.println("¿Que decides hacer?");
@@ -92,11 +97,11 @@ public class App {
             System.out.println("Al dia siguiente...\n");
             pausa(5000);
 
-            System.out.println("Sigues pensando en lo que paso ayer pero tambien estas contento porque has quedado con tu amigo David para salir a dar una vuelta por el parque.");
+            System.out.println("Sigues pensando en lo que paso ayer pero también estas contento porque has quedado con tu amigo David para salir a dar una vuelta por el parque.");
             pausa(4000);
-            System.out.println("Os encontrais en el parque, pero solo sabeis hablar de videos, memes y tonterias de internet.");
+            System.out.println("Os encontráis en el parque, pero solo sabéis hablar de videos, memes y tonterías de internet.");
             pausa(4000);
-            System.out.println("Empiezas a darte cuenta por lo sucedido con el vagabundo y a su vez prestas más atencion a lo que ocurre.");
+            System.out.println("Empiezas a darte cuenta por lo sucedido con el vagabundo y a su vez prestas más atención a lo que ocurre.");
             pausa(4000);
             System.out.println("De pronto...\n");
             pausa(5000);
@@ -106,13 +111,13 @@ public class App {
             pausa(4000);
             System.out.println("Tu amigo ni siquiera levanta la vista del móvil. - 'Bua, literal soy yo, tremendo meme' - murmura embobado.");
             pausa(4000);
-            System.out.println("A su vez te das cuenta que a una mujer que estaba paseando por el parque le estan robando.");
+            System.out.println("A su vez te das cuenta que a una mujer que estaba paseando por el parque le están robando.");
             pausa(4000);
-            System.out.println("Se lo dices a tu amigo y este levanta la mirada rapido, y empieza a teclear en el movil.\n");
+            System.out.println("Se lo dices a tu amigo y este levanta la mirada rápido, y empieza a teclear en el móvil.\n");
             pausa(4000);
-            System.out.println("[Tu]: (Pensando) 'Menos mal, david tiene todava algo de humanidad.' - piensas aliviado.\n");
+            System.out.println("[Tu]: (Pensando) 'Menos mal, David tiene todavía algo de humanidad.' - piensas aliviado.\n");
             pausa(4000);
-            System.out.println("[David]: 'Corre, ponte que lo estoy subiendo a Tick Tock' - dice tu amigo, mientras empieza a grabar con el movil.\n");
+            System.out.println("[David]: 'Corre, ponte que lo estoy subiendo a TikTok' - dice tu amigo, mientras empieza a grabar con el móvil.\n");
             pausa(4000);
             System.out.println("Sientes asco. Te levantas sin decir nada y te vas directo a casa.\n");
             pausa(5000);
@@ -144,7 +149,7 @@ public class App {
 
             System.out.println("\n¿Qué actitud vas a tomar ante esta nueva realidad?\n");
             System.out.println("1. El 'Hater' (Lo odia todo y a todos. Pega durísimo con ataques de toxicidad pura, pero tiene la piel muy fina)\n");
-            System.out.println("2. El 'Conformista' (Absorbe el daño y se adapta. Su sentido comun es superior porqué siempre encuentra la forma de conformarse con su situación.)\n");
+            System.out.println("2. El 'Conformista' (Absorbe el daño y se adapta. Su sentido común es superior porqué siempre encuentra la forma de conformarse con su situación.)\n");
             System.out.println("3. El 'Tryhard' (Se esfuerza demasiado en cada aspecto de su vida. Muy equilibrado, rapidísimo. Pero si algo sale mal, se tiltea a niveles insospechados).\n");
             System.out.print("Elige tu camino (1-3): ");
             
@@ -223,7 +228,7 @@ public class App {
         pausa(4000);
         System.out.println("A lo largo de la avenida, ves a más chavales. Algunos subidos a los coches aullando, otros olisqueando farolas.\n");
         pausa(4000);
-        System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Joder... tengo que llegar hasta el Mercadona, pero la calle está infestada.'\n2");
+        System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Joder... tengo que llegar hasta el Mercadona, pero la calle está infestada.'\n");
         pausa(4000);
         
         mainSelect.gainXp(50);// Experiencia de enemigo común
@@ -234,7 +239,7 @@ public class App {
         System.out.println("[ Partida guardada automáticamente ]");
         }
 
-        if (mainSelect.getProgresoHistoria() == 3) {
+        if (mainSelect.getProgresoHistoria() == 2) {
             System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Pero ¿qué hago?':\n");
             pausa(4000);
             System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '1. Voy por la calle'\n");
@@ -245,7 +250,7 @@ public class App {
             pausa(3000);
 
             if (decision2 == 1) {
-                System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '¿Que somos?¿Leones o huevones?, como se me acerque uno le pego un palizon'\n");
+                System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '¿Que somos?¿Leones o huevones?, como se me acerque uno le pego un palizón'\n");
                 pausa(4000);
                 System.out.println("Decides seguir por la calle, pero despacio, sin llamar la atención\n");
                 pausa(4000);
@@ -269,7 +274,7 @@ public class App {
                 pausa(4000);
                 System.out.println("[Mama Therian]: '¡Hola, pequeño! ¿Qué tal estás? ¿Tienes hambre?' \n");
                 pausa(4000);
-                System.out.println("El therian empieza a comer la comida de perro sin ningun problema.\n");
+                System.out.println("El therian empieza a comer la comida de perro sin ningún problema.\n");
                 pausa(4000);
                 System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '!Hostia puta, que asco más grande!.' \n");
                 pausa(4000);
@@ -281,9 +286,9 @@ public class App {
                 pausa(4000);
                 System.out.println("El chaval empieza a dar saltos de felicidad como si esa raza le hubiese gustado como para identificarse con ella.\n");
                 pausa(4000);
-                System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '!Y se queda tan pancho, estan enfermos!.' \n");
+                System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '!Y se queda tan pancho, están enfermos!.' \n");
                 pausa(4000);
-                System.out.println("[Mama Therian]: '¡¿Qúe te has creido niñatoo?!, te vas a enterar'\n");
+                System.out.println("[Mama Therian]: '¡¿Qúe te has creído niñato?!, te vas a enterar'\n");
                 pausa(4000);
                 
                 System.out.println("\n¡Mama Therian the azuza a su 'Mastin' !");
@@ -291,6 +296,59 @@ public class App {
         
                 miRPG.Enemies.MamaTherian segundoEnemigo = new miRPG.Enemies.MamaTherian();
                 miRPG.System.Combat.startCombat(mainSelect, segundoEnemigo);
+
+                mainSelect.gainXp(50);
+
+                //Progreso historia 3
+                mainSelect.setProgresoHistoria(3);
+                miRPG.System.SaveManager.save(mainSelect);
+                System.out.println("[ Partida guardada automáticamente ]");
+
+                if (mainSelect.getProgresoHistoria() == 2) {
+                    System.out.println("La vieja al ser derrotada comienza a mirar para todos los lados.");
+                    pausa(4000);
+                    System.out.println("Los therian que había cerca comienzan a ponerse tensos y de pronto la vieja comienza a aullar.");
+                    pausa(4000);
+                    System.out.println("Los therian comienzan a aullar también, como si se hubieran sincronizado con la vieja.");
+                    pausa(4000);
+                    System.out.println("De repente, todos los therian de la calle comienzan a correr hacia ti, como si hubieran olido tu sangre.\n");
+                    pausa(4000);
+                    System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '¡Joder, me han descubierto! ¡Mejor salgo por patas!'\n");
+                    pausa(4000);
+                    System.out.println("Empiezas a correr por la calle con todos los therian persiguiéndote.");
+                    pausa(4000);
+                    System.out.println("Pasas por delante de un contenedor. ¿que haces?.\n");
+                    pausa(4000);
+                    System.out.println("1. Saltas dentro del contenedor para esconderte.");
+                    System.out.println("2. Sigues corriendo.");
+                    System.out.print("Elige tu camino (1-2): ");
+                    int decision3 = scanner.nextInt();
+                    scanner.nextLine(); // Limpiar el buffer
+                    pausa(4000);
+
+                    if (decision3 == 1) {
+                        System.out.println("Te metes dentro del contenedor y cierras la tapa justo a tiempo para que los therian no te vean.");
+                        pausa(4000);
+                        System.out.println("Dentro del contenedor, puedes oir a los therian correr por la calle, buscando por todas partes, pero no pueden encontrarte.\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Menos mal que he podido esconderme, esto se estaba poniendo feo.'\n");
+                        pausa(4000);
+                        System.out.println("Después de un rato, los therian se cansan de buscar y se van, dejando la calle en silencio.");
+                        pausa(4000);
+                        System.out.println("Con cuidado abres la tapa del contenedor y sales, asegurándote de que no hay ningún therian cerca.");
+                        pausa(4000);
+                        System.out.println("Antes de salir te das cuenta que hay algo en el fondo del contenedor.");
+                        pausa(4000);
+                        mainSelect.getInventory().add(new miRPG.UtilItem.Monster());
+                        System.out.println("\n---> Has obtenido: [Lata de Monster] <---");
+                        System.out.println("Se ha guardado en tu mochila (Opción 5 en combate).");
+                        pausa(2000);
+
+                        //Primera aparición del menú
+                        GameMenu.menuIntermedio(mainSelect, scanner);
+
+
+
             }
 
 

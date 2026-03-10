@@ -12,7 +12,7 @@ public abstract class GameCharacter implements Serializable {
     private Statistics stats;
     private List<Item> inventory;
     // Lista con TODAS las habilidades aprendidas
-    private List<Skill> skills; 
+    private java.util.List<miRPG.Base.Skill> learnedSkills = new java.util.ArrayList<>(); 
     // Los 4 huecos para las habilidades que vas a usar en combate
     private Skill[] equippedSkills;
 
@@ -22,7 +22,7 @@ public abstract class GameCharacter implements Serializable {
         this.currentHealth = stats.getMaxHealth();
         this.stats = stats;
         this.inventory = new ArrayList<>();
-        this.skills = new ArrayList<>();
+        this.learnedSkills = new ArrayList<>();
         this.equippedSkills = new Skill[4];
     }
 
@@ -39,8 +39,8 @@ public abstract class GameCharacter implements Serializable {
     public List<Item> getInventory() {return inventory;}
     public void setInventory(List<Item> inventory) {this.inventory = inventory;}
 
-    public List<Skill> getskill() {return skills;}
-    public void setSkill(List<Skill> skills) {this.skills = skills;}
+    public List<Skill> getSkills() {return learnedSkills;}
+    public void setSkills(List<Skill> skills) {this.learnedSkills = skills;}
 
     public Skill[] getEquippedSkills() {return equippedSkills;}
     public void setEquippedSkills(Skill[] equippedSkills) {this.equippedSkills = equippedSkills;}
@@ -51,7 +51,7 @@ public abstract class GameCharacter implements Serializable {
 
     //aprender habilidad se añade a la lista de habilidades aprendidas.
     public void learnSkill(Skill newSkill) {
-        this.skills.add(newSkill);
+        this.learnedSkills.add(newSkill);
         System.out.println(this.nameCharacter + " ha aprendido la habilidad: " + newSkill);
     }
     // Equipar una habilidad en uno de los 4 huecos (slot debe ser 1, 2, 3 o 4)

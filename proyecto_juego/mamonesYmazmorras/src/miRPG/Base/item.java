@@ -20,8 +20,8 @@ public abstract class Item implements Serializable {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
-    //metodo abstracto para usar el item
-    public abstract boolean use(GameCharacter user);
+    //método abstracto para usar el item
+    public abstract boolean use(GameCharacter target);
 
 
 

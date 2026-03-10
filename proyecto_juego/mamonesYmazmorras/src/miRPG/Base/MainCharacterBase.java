@@ -4,9 +4,9 @@ public abstract class MainCharacterBase extends GameCharacter {
     
     // Variables de experiencia exclusivas de los protagonistas
     private int level;
-    private double currentXp;
-    private double xpToNextLevel;
-    private double lvlPoints;
+    private int currentXp;
+    private int xpToNextLevel;
+    private int lvlPoints;
     private int progresoHistoria;
 
     public MainCharacterBase(String name, Statistics stats) {
@@ -23,14 +23,14 @@ public abstract class MainCharacterBase extends GameCharacter {
     public int getLevel() {return level;}
     public void setLevel(int level) {this.level = level;}
 
-    public double getCurrentXp() {return currentXp;}
-    public void setCurrentXp(double currentXp) {this.currentXp = currentXp;}
+    public int getCurrentXp() {return currentXp;}
+    public void setCurrentXp(int currentXp) {this.currentXp = currentXp;}
 
-    public double getXpToNextLevel() {return xpToNextLevel;}
-    public void setXpToNextLevel(double xpToNextLevel) {this.xpToNextLevel = xpToNextLevel;}
+    public int getXpToNextLevel() {return xpToNextLevel;}
+    public void setXpToNextLevel(int xpToNextLevel) {this.xpToNextLevel = xpToNextLevel;}
 
-    public double getLvlPoints() {return lvlPoints;}
-    public void setLvlPoints(double lvlPoints) {this.lvlPoints = lvlPoints;}
+    public int getLvlPoints() {return lvlPoints;}
+    public void setLvlPoints(int lvlPoints) {this.lvlPoints = lvlPoints;}
 
     public int getProgresoHistoria() { return progresoHistoria; }
     public void setProgresoHistoria(int progresoHistoria) { this.progresoHistoria = progresoHistoria; }
@@ -38,7 +38,7 @@ public abstract class MainCharacterBase extends GameCharacter {
     // --- SISTEMA DE EXPERIENCIA Y SUBIDA DE NIVEL ---
 
     // Sumar puntos de lvl
-    public void gainXp(double newPoints) {
+    public void gainXp(int newPoints) {
         this.currentXp += newPoints;
         System.out.println("Has ganado " + newPoints + " puntos de experiencia. Total de puntos de experiencia: " + this.currentXp);
         while (this.currentXp >= this.xpToNextLevel) {

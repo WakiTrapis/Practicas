@@ -3,6 +3,7 @@ package miRPG.System;
 import miRPG.Base.GameCharacter;
 import java.util.Scanner;
 
+
 public class Combat {
     public static boolean MODO_RAPIDO = true;
 
@@ -95,12 +96,57 @@ public class Combat {
                 pausa(2000);
             }
         } else if (opcion == 5) {
-            System.out.println("Abres tu mochila... (En construcción)");
-        } else {
-            System.out.println("Opción no válida. Pierdes el turno por dudar.");
+            System.out.println("\n--- MOCHILA ---");
+            
+            // Cogemos tu ArrayList
+            java.util.List<miRPG.Base.Item> mochila = player.getInventory(); 
+
+            // Con ArrayList es súper fácil saber si está vacía
+            if (mochila.isEmpty()) {
+                System.out.println("¡Solo hay pelusas! Tu mochila está vacía.");
+                pausa(2000);
+                // Le volvemos a mostrar el menú para que no pierda el turno
+                playerTurn(player, enemy, scanner); 
+                return;
+            }
+
+            // Mostramos los objetos que tienes usando .size() y .get()
+            for (int i = 0; i < mochila.size(); i++) {
+                System.out.println((i + 1) + ". " + mochila.get(i).getName()); 
+            }
+            System.out.println("0. Cancelar y volver al ataque");
+
+            System.out.print("¿Qué quieres usar? (Elige un número): ");
+            int opcObjeto = scanner.nextInt();
+            scanner.nextLine();
+
+            if (opcObjeto == 0) {
+                // Si se arrepiente, vuelve a su turno normal
+                System.out.println("Cierras la mochila.");
+                playerTurn(player, enemy, scanner);
+                return;
+            } else if (opcObjeto >= 1 && opcObjeto <= mochila.size()) {
+                // Sacamos el objeto de la lista con .get()
+                miRPG.Base.Item objetoElegido = mochila.get(opcObjeto - 1);
+                
+                // ¡Ejecutamos el método use!
+                boolean seHaGastado = objetoElegido.use(player);
+                pausa(2000);
+
+                if (seHaGastado) {
+                    // Si devuelve true (se lo bebió), lo ELIMINAMOS de la lista
+                    mochila.remove(opcObjeto - 1); 
+                } else {
+                    // Si devuelve false (ej: ya tenía la vida a tope), le devolvemos el turno
+                    playerTurn(player, enemy, scanner);
+                    return;
+                }
+            } else {
+                System.out.println("No encuentras ese objeto. Pierdes el turno buscando.");
+                pausa(2000);
+            }
         }
     }
-
     private static void enemyTurn(GameCharacter enemy, GameCharacter player) {
         System.out.println("\nEs el turno de " + enemy.getNameCharacter() + "...");
         pausa(1000);

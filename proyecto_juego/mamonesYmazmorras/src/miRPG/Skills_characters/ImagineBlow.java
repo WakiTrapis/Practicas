@@ -5,8 +5,8 @@ import miRPG.Base.Skill;
 
 public class ImagineBlow extends Skill {
             public ImagineBlow() {
-        // Nombre, Descripción, Daño base (powerSkill)
-        super("Zarpazo Imaginario", "lanza manotazos gruñendo sin control", 3.0, false); 
+        // Nombre, Descripción, Daño base (powerSkill), Precisión (accuracy)
+        super("Zarpazo Imaginario", "lanza manotazos gruñendo sin control", 3.0, 90, false); 
     }
 
     @Override
