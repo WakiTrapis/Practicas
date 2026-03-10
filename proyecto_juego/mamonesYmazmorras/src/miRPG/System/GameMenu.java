@@ -4,8 +4,11 @@ import miRPG.Base.Item;
 import java.util.List;
 import java.util.Scanner;
 import miRPG.Base.MainCharacterBase;
+import miRPG.Base.Skill;
 
 public class GameMenu {
+
+    // Menú intermedio que aparece entre combates o eventos importantes
     public static void menuIntermedio(MainCharacterBase player, Scanner scanner) {
         boolean continuar = false;
 
@@ -20,7 +23,7 @@ public class GameMenu {
                 System.out.println("3. ??? (Bloqueado por la historia)");
             }
             System.out.println("4. Repartir puntos de nivel");
-            System.out.println("5. Continuar la aventura");
+            System.out.println("5. Continuar la aventura (Restaurar Cordura)");
             System.out.print("Elige una opción: ");
 
             int opcion = scanner.nextInt();
@@ -45,15 +48,16 @@ public class GameMenu {
                     manageLvlPoints((MainCharacterBase) player, scanner);
                     break;
                 case 5:
-                    System.out.println("\nTe ajustas la ropa, respiras hondo y continúas tu camino...");
+                    player.fullHeal();
+                    System.out.println("\nTe ajustas la ropa, respiras hondo y continúas tu camino...  (Has restablecido tu Cordura al máximo)");
                     continuar = true; // Rompe el bucle
                     break;
                 default:
-                    System.out.println("\nOpción no válida. Concéntrate, que te despistas.");
+                    System.out.println("\nOpción no válida. Concéntrate, que estas amamonao.");
             }
         }
     }
-    // Submenú de la mochila (ahora es privado porque solo se usa dentro de esta clase)
+    // Submenu de la mochila
     private static void openBag(MainCharacterBase player, Scanner scanner) {
         List<Item> mochila = player.getInventory();
 
@@ -85,6 +89,7 @@ public class GameMenu {
             System.out.println("No encuentras ese objeto.");
         }
     }
+    // Submenu de gestión de habilidades
     private static void manageSkills(MainCharacterBase player, java.util.Scanner scanner) {
         boolean saliendo = false;
 
@@ -183,7 +188,7 @@ public class GameMenu {
             }
         }
     }
-    private static void shopGame(MainCharacterBase player, java.util.Scanner scanner) {
+    public static void shopGame(MainCharacterBase player, java.util.Scanner scanner) {
         System.out.println("\n=== MERCADONA: SAQUEO A CIEGAS ===");
         System.out.println("Entras al supermercado esquivando cristales rotos. Todo está hecho un desastre.");
         System.out.println("Escuchas ruidos extraños al fondo... Solo tienes tiempo de mirar en UN pasillo rápido.");
@@ -205,7 +210,7 @@ public class GameMenu {
             System.out.println("\n¡Tienes suerte! Rebuscas entre los escombros y encuentras algo que no se han llevado.");
             
             if (eleccion == 1) {
-                System.out.println("Encuentras un paquete de napolitanas intacto. ¡Te da un subidón de energía!");
+                System.out.println("Encuentras un paquete de napolitanas intacto. ¡Te da un Subidón de energía!");
                 player.gainXp(50); // 50 de XP
             } else if (eleccion == 2) {
                 System.out.println("¡Bingo! Un palé con latas frías.");
@@ -226,5 +231,19 @@ public class GameMenu {
         // Pasamos al progreso 5 para bloquear el evento y que no farmee infinitamente 
         miRPG.System.SaveManager.save(player);
         System.out.println("[ Partida Guardada - Mercadona completado ]");
+    }
+
+    public static void sortearHabilidad(MainCharacterBase player, Skill opcionA, Skill opcionB) {
+        // Tirada de moneda
+        if (Math.random() < 0.5) {
+        player.getSkills().add(opcionA);
+        System.out.println("¡Has aprendido la habilidad: [" + opcionA.getName() + "]!");
+        } else {
+        player.getSkills().add(opcionB);
+        System.out.println("¡Has aprendido la habilidad: [" + opcionB.getName() + "]!");
+        }
+    
+    // Aprovechamos para guardar el progreso ya que el jugador ha ganado algo
+        miRPG.System.SaveManager.save(player); 
     }
 }

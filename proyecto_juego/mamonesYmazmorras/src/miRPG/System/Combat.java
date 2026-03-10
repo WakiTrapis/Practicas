@@ -11,7 +11,7 @@ public class Combat {
         Scanner scanner = new Scanner(System.in);
         boolean victoria = false;
 
-        // BUCLE DE REINTENTO: No sales de aquí hasta que ganes
+// BUCLE DE REINTENTO: No sales de aquí hasta que ganes
         while (!victoria) {
             System.out.println("\n==================================================");
             System.out.println("💥 ¡ENFRENTAMIENTO INEVITABLE! 💥");
@@ -22,7 +22,7 @@ public class Combat {
 
             int turn = 1;
 
-            // BUCLE DE LA PELEA ACTUAL
+// BUCLE DE LA PELEA ACTUAL
             while(player.isAlive() && enemy.isAlive()) {
                 System.out.println("\n--- TURNO " + turn + " ---");
                 System.out.println("Tu Cordura: " + player.getCurrentHealth() + "/" + player.getStats().getMaxHealth() + 
@@ -45,7 +45,7 @@ public class Combat {
                 pausa(1500);
             }
 
-            // --- COMPROBACIÓN DEL RESULTADO ---
+// --- COMPROBACIÓN DEL RESULTADO ---.
             if (!player.isAlive()) {
                 System.out.println("\nTu cordura ha llegado a cero... Te dejas caer al suelo.");
                 pausa(2000);
@@ -59,16 +59,17 @@ public class Combat {
                 
             } else if (!enemy.isAlive()) {
                 System.out.println("\n¡Has derrotado a " + enemy.getNameCharacter() + " y conservas tu cordura!");
-                victoria = true; // ¡Rompemos el bucle y volvemos al Main!
+                victoria = true;
+                // ¡Rompemos el bucle y volvemos al Main!
             }
         }
     }
 
-    // EL NUEVO MENÚ DEL JUGADOR
+// EL NUEVO MENÚ DEL JUGADOR.
     private static void playerTurn(GameCharacter player, GameCharacter enemy, Scanner scanner) {
         System.out.println("\n¿Qué vas a hacer, " + player.getNameCharacter() + "?");
         
-        // 1. Mostrar las habilidades reales equipadas
+// 1. Mostrar las habilidades reales equipadas.
         miRPG.Base.Skill[] habilidades = player.getEquippedSkills();
         for (int i = 0; i < 4; i++) {
             if (habilidades[i] != null) {
@@ -83,12 +84,12 @@ public class Combat {
         int opcion = scanner.nextInt();
         scanner.nextLine();
 
-        // 2. Ejecutar la acción
+// 2. Ejecutar la acción.
         if (opcion >= 1 && opcion <= 4) {
             miRPG.Base.Skill habilidadElegida = habilidades[opcion - 1]; // -1 por el índice del array
             
             if (habilidadElegida != null) {
-                // ¡Lanza la habilidad de verdad!
+                // ¡Lanza la habilidad de verdad!.
                 habilidadElegida.use(player, enemy);
                 pausa(2000);
             } else {
@@ -97,20 +98,17 @@ public class Combat {
             }
         } else if (opcion == 5) {
             System.out.println("\n--- MOCHILA ---");
-            
-            // Cogemos tu ArrayList
             java.util.List<miRPG.Base.Item> mochila = player.getInventory(); 
 
-            // Con ArrayList es súper fácil saber si está vacía
             if (mochila.isEmpty()) {
                 System.out.println("¡Solo hay pelusas! Tu mochila está vacía.");
                 pausa(2000);
-                // Le volvemos a mostrar el menú para que no pierda el turno
+                // Le volvemos a mostrar el menú para que no pierda el turno.
                 playerTurn(player, enemy, scanner); 
                 return;
             }
 
-            // Mostramos los objetos que tienes usando .size() y .get()
+            // Mostramos los objetos que tienes en la mochila con un bucle y su índice para elegir.
             for (int i = 0; i < mochila.size(); i++) {
                 System.out.println((i + 1) + ". " + mochila.get(i).getName()); 
             }

@@ -13,7 +13,7 @@ public class CringeBite extends Skill {
     @Override
     public void use(GameCharacter user, GameCharacter target) {
         if(this.checkHit(target)){
-        System.out.println("\n¡" + user.getNameCharacter() + " muerde brutalemte a " + target.getNameCharacter() + "!");
+        System.out.println("\n¡" + user.getNameCharacter() + " muerde brutalmente a " + target.getNameCharacter() + "!");
         
         // Calculamos el daño: Poder de la habilidad (3) + El Subidón (Ataque Especial) del atacante
         double totalDamage = this.getPowerSkill() + user.getStats().getPower();

@@ -36,7 +36,7 @@ public abstract class Skill implements Serializable {
     public double getAccuracy() {return accuracy;}
     public void setAccuracy(double accuracy) {this.accuracy = accuracy;}
 
-    //metodo abstracto para usar la habilidad
+    //método abstracto para usar la habilidad
     public abstract void use(GameCharacter user, GameCharacter target);
 
     // En Skill.java

@@ -45,9 +45,9 @@ public abstract class GameCharacter implements Serializable {
     public Skill[] getEquippedSkills() {return equippedSkills;}
     public void setEquippedSkills(Skill[] equippedSkills) {this.equippedSkills = equippedSkills;}
 
-    //metodos
+    //métodos
 
-    //gestion habilidades e items
+    //gestión habilidades e items
 
     //aprender habilidad se añade a la lista de habilidades aprendidas.
     public void learnSkill(Skill newSkill) {

@@ -7,7 +7,7 @@ public class InvoluntaryRescue extends Skill {
     
             public InvoluntaryRescue() {
         // Nombre, Descripción, Daño base (powerSkill), Precisión (accuracy), Especial (isSpecial)
-        super("Rescate Involuntario", "La obsesión por los animales atrapa al objetivo y le provoca daño psicologico", 6.0, 85, true);
+        super("Rescate Involuntario", "La obsesión por los animales atrapa al objetivo y le provoca daño psicológico", 6.0, 85, true);
     }
 
     @Override
