@@ -5,12 +5,12 @@ import miRPG.Base.GameCharacter;
 import miRPG.Skills_characters.TrolleyRam;
 import miRPG.Skills_characters.InvoluntaryRescue;
 
-public class TherianAlpha extends GameCharacter {
-        public TherianAlpha() {
+public class Employee extends GameCharacter {
+        public Employee() {
         // Stats de Enemigo.
         // Vida: 30, Fuerza: 8, Def Física: 2, Def Especial: 2, Subidón: 0, Velocidad: 10
-        super("Therian Alpha", new Statistics(80, 18, 13, 9, 9, 24));
-        this.getEquippedSkills()[0] = new ();
-        this.getEquippedSkills()[1] = new ();
+        super("Empleado Molesto", new Statistics(50, 10, 5, 4, 5, 15));
+        this.getEquippedSkills()[0] = new TrolleyRam();
+        this.getEquippedSkills()[1] = new InvoluntaryRescue();
     }
 }

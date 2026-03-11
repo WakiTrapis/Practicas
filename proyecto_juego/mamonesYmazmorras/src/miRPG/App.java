@@ -209,7 +209,7 @@ public class App {
         // --- INICIO DEL COMBATE ---
         System.out.println("\n¡EL CHAVAL SALTA HACIA TI A CUATRO PATAS!");
         pausa(4000);
-//Combate con el Terian Iniciado       
+//Combate con el Therian Iniciado       
         miRPG.Enemies.InitiatedTherian primerEnemigo = new miRPG.Enemies.InitiatedTherian();
         miRPG.System.Combat.startCombat(mainSelect, primerEnemigo);
         
@@ -226,7 +226,7 @@ public class App {
         pausa(4000);
         System.out.println("A lo largo de la avenida, ves a más chavales. Algunos subidos a los coches aullando, otros olisqueando farolas.\n");
         pausa(4000);
-        System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Joder... tengo que llegar hasta el Mercadona, pero la calle está infestada.'\n");
+        System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'Joder... tengo que llegar hasta el Mercadona, pero la calle está infectada.'\n");
         pausa(4000);
         
         mainSelect.gainXp(50);// Experiencia de enemigo común
@@ -246,8 +246,9 @@ public class App {
             int decision2 = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
             pausa(3000);
+           
 //Ruta 1/seguir por la calle
-            if (decision2 == 1) {
+            if (mainSelect.getProgresoHistoria() == 2 && decision2 == 1) {
                 System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) '¿Que somos?¿Leones o huevones?, como se me acerque uno le pego un palizón'\n");
                 pausa(4000);
                 System.out.println("Decides seguir por la calle, pero despacio, sin llamar la atención\n");
@@ -301,7 +302,7 @@ public class App {
                 mainSelect.setProgresoHistoria(3);
                 miRPG.System.SaveManager.save(mainSelect);
                 System.out.println("[ Partida guardada automáticamente ]");
-
+                }
                 if (mainSelect.getProgresoHistoria() == 3 && decision2 == 1) {
                     System.out.println("La vieja al ser derrotada comienza a mirar para todos los lados.");
                     pausa(4000);
@@ -317,14 +318,16 @@ public class App {
                     pausa(4000);
                     System.out.println("Pasas por delante de un contenedor. ¿que haces?.\n");
                     pausa(4000);
+                    mainSelect.setProgresoHistoria(4);
+                    miRPG.System.SaveManager.save(mainSelect);
                     System.out.println("1. Saltas dentro del contenedor para esconderte.");
                     System.out.println("2. Sigues corriendo.");
                     System.out.print("Elige tu camino (1-2): ");
                     int decision3 = scanner.nextInt();
                     scanner.nextLine(); // Limpiar el buffer
                     pausa(4000);
-
-                    if (decision3 == 1) {
+                    
+                    if (mainSelect.getProgresoHistoria() == 4 && decision3 == 1) {
                         System.out.println("Te metes dentro del contenedor y cierras la tapa justo a tiempo para que los therian no te vean.");
                         pausa(4000);
                         System.out.println("Dentro del contenedor, puedes oir a los therian correr por la calle, buscando por todas partes, pero no pueden encontrarte.\n");
@@ -417,6 +420,8 @@ public class App {
                         pausa(4000);
                         System.out.println("Comienzas a mirar alrededor buscando una salida o un escondite y solo ves una caseta del personal de mantenimiento del parque.\n");
                         pausa(4000);
+                        mainSelect.setProgresoHistoria(5);
+                        miRPG.System.SaveManager.save(mainSelect);
                         System.out.println("1. Corres hacia la caseta.");
                         System.out.println("2. Te quedas en el sitio desafiante.");
                         System.out.print("Elige tu camino (1-2): ");
@@ -424,7 +429,7 @@ public class App {
                         scanner.nextLine(); // Limpiar el buffer
                         pausa(4000);
 
-                        if (decision4 == 1) {
+                        if (mainSelect.getProgresoHistoria() == 5 && decision4 == 1) {
                             System.out.println("Corres hacia la caseta, mientras que los therian empiezan a correr.");
                             pausa(4000);
                             System.out.println("Entras en la caseta y cierras la puerta justo a tiempo.");
@@ -443,13 +448,16 @@ public class App {
                             System.out.println("Abres la puerta y sin mas opciones te enfrentas al Therian Alpha.\n");
                             pausa(4000);
                             miRPG.Enemies.TherianAlpha tercerEnemigo = new miRPG.Enemies.TherianAlpha();
+                             miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo);
                             System.out.println("Salen corriendo balbuceando y aullando sin control .");
                             pausa(4000);
                             System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'La proxima vez que vuelvan.'\n");
                             pausa(4000);
                             System.out.println("Sales del parque y por fin llegas al bendito Mercadona.'\n");
                             pausa(4000);
-                        } else {
+                            miRPG.System.GameMenu.shopGame(mainSelect, scanner);
+                            }
+                        if (mainSelect.getProgresoHistoria() == 5 && decision4 == 2) {
                             System.out.println("Decides quedarte en el sitio desafiante, mirando fijamente al duo mientras este se acerca a ti.");
                             pausa(4000);
                             System.out.println("\n[Therian Alpha]: 'Con que tu eres el que le ha dado una tunda a uno de mi manada'\n");
@@ -467,44 +475,178 @@ public class App {
                             System.out.println("[" + mainSelect.getNameCharacter() + "]: '¿En que quedamos? Os voy a tener que enseñar a usar la lógica.'\n");
                             pausa(4000);
                             miRPG.Enemies.TherianAlpha tercerEnemigo = new miRPG.Enemies.TherianAlpha();
+                                miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo);
                             GameMenu.sortearHabilidad(mainSelect, new BlazingBuckle(), new EnlightenedReasoning());
                             GameMenu.menuIntermedio(mainSelect, scanner);
                             pausa(4000);
                             System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'La proxima vez que vuelvan.'\n");
                             pausa(4000);
                             System.out.println("Sales del parque y por fin llegas al bendito Mercadona.'\n");
-                            pausa(4000);  
-                        }
+                            pausa(4000);
+                            miRPG.System.GameMenu.shopGame(mainSelect, scanner);
+                            } 
+                    }
+                    if(mainSelect.getProgresoHistoria() == 4 && decision3 == 2)  {
+                        System.out.println("Pasas del contenedor y sigues corriendo.'");
+                        pausa(4000);
+                        System.out.println("Los tienes pisándote los talones.'");
+                        pausa(4000);
+                        System.out.println("Solo tienes que atravesar el parque para llegar al Mercadona.'");
+                        pausa(4000);
+                        System.out.println("Pero cada vez te falta mas el aire, demasiada intensidad corriendo.'");
+                        pausa(4000);
+                        System.out.println("Comienzas a buscar por todos lados algún escondite o algo para poder despistarlos.'");
+                        pausa(4000);
+                        System.out.println("Observas una caseta de mantenimiento cerca de la salida del parque.'");
+                        pausa(4000);
+                        System.out.println("A su vez ves una multitud aplaudiendo y elogiando algún tipo de espectáculo.'");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'No es momento de parar.'\n");
+                        pausa(4000);
+                        System.out.println("Corres hacia la caseta, pero esta cerrada.");
+                        pausa(4000);
+                        System.out.println("No tienes escapatoria.");
+                        pausa(4000);
+                        System.out.println("Los tienes casi encima.");
+                        pausa(4000);
+                        System.out.println("En ese instante se abre y cierra la puerta dejándote caer dentro de la caseta.\n");
+                        pausa(4000);
+                        System.out.println("[ JARDINERO ]: '¿Que demonios pasa aquí?.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: Lo siento, era cuestión de vida o muerte.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: Estaba tan tranquilo en mi casa cuando...'\n");
+                        pausa(4000);
+                        System.out.println("[ JARDINERO ]: 'No me cuentes más, solo tengo que ver el zoológico que hay ahi fuera montado.'\n");
+                        pausa(4000);
+                        System.out.println("[ JARDINERO ]: 'Una cosa es que te gusten los animales.'\n");
+                        pausa(4000);
+                        System.out.println("[ JARDINERO ]: 'A mi me gustan.'\n");
+                        pausa(4000);
+                        System.out.println("[ JARDINERO ]: '¿A ti te gustan?.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Pues sí, pero esto ya pasa de castaño oscuro.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Desde que he salido de casa no han parado de perseguirme, estoy hasta los cojones.'\n");
+                        pausa(4000);
+                        System.out.println("[ JARDINERO ]: 'Creo que tengo algo que te puede ser muy util.'\n");
+                        pausa(4000);
+                        System.out.println("[ JARDINERO ]: 'Toma.'\n");
+                        pausa(4000);
+
+                        GameMenu.sortearHabilidad(mainSelect, new BlazingBuckle(), new EnlightenedReasoning());
+
+                        System.out.println("\n[ JARDINERO ]: 'Ahora sal ahi fuera y enséñales quien es su amo.'\n");
+                        pausa(4000);
+                        
+                        GameMenu.menuIntermedio(mainSelect, scanner);
+
+                        System.out.println("Haciendo caso al jardinero, abres la puerta y sales.\n");
+                        pausa(4000);
+                        System.out.println("En la puerta hay tres therians.\n");
+                        pausa(4000);
+                        System.out.println("Sonriendo desafiantes, en fila, como si quisieran esconder algo detrás de ellos.\n");
+                        pausa(4000);
+                        System.out.println("[ ??? ]: 'Aaaauuuuuu.'\n");
+                        pausa(4000);
+                        System.out.println("Algo se revolvía detrás de ellos.\n");
+                        pausa(4000);
+                        System.out.println("Al prestar mas atención te das cuenta de que es una chica que se esta poniendo el disfraz rápidamente.\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Joder tíos, JAJAJAJA, no podéis ser mas cutres.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Si tanto queréis pelea, pues la tendréis.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Luego no quiero gimoteo.'\n");
+                        pausa(4000);
+
+                        miRPG.Enemies.TherianAlpha tercerEnemigo = new miRPG.Enemies.TherianAlpha();
+                        miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo);
+
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'La proxima vez que me hagáis correr por todo el barrio me encargare de que os metan a todos en una perrera psiquiátrica .'\n");
+                        pausa(4000);
+                        System.out.println("Dejas a los chavales destrozados, le das las gracias al jardinero y sales del parque.'\n");
+                        pausa(4000);
+                        System.out.println("Al salir ves al otro lado de la calle el bendito Mercadona.'\n");
+                        pausa(4000);
+                    }
+                }
+                //Ruta 2/Atajo por callejón.
+                if (mainSelect.getProgresoHistoria() == 3 && decision2 == 2) {
+                    System.out.println("Prefieres no llamar la atención y te diriges hacia el callejón.'");
+                        pausa(4000);
+                        System.out.println("Este esta lleno de basura, esta oscuro y el olor te eriza hasta los pelos de la nariz.'");
+                        pausa(4000);
+                        System.out.println("no muy avanzado en el callejón observas que una de las puertas traseras de una tienda de informática se abre.'");
+                        pausa(4000);
+                        System.out.println("Un empleado salia con unas grandes bolsas que deposito en el contenedor que había cerca.'");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Vaya, estas tiendas siempre tiran cosas que funcionan todavía.'\n");
+                        pausa(4000);
+
+                        GameMenu.eventoContenedorTecnologico(mainSelect, new EnlightenedReasoning(), new BlazingBuckle(), scanner);
+
+                        GameMenu.menuIntermedio(mainSelect, scanner);
+
+
+                        System.out.println("El dependiente de la tienda escucha ruidos fuera y decide salir a comprobar.'");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Muchacho, ¿qué haces aquí?'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: '¿No has visto la calle principal?.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Pues claro pero he oído que en los callejones del barrio se están formando grupos de Therians y no me hace ninguna gracia.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: '¿No seras tu unos de ellos?.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: '¿Me ves con cara de enfermo mental?.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Perdón, no queria ofenderte.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Pues piense las cosas antes de decirlas hombre, ¿Tan mala cara tengo?.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Pues no te pongas a caminar por los callejones, niñato.'\n");
+                        pausa(4000);
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Escúchame bien clarito, yo camino por donde me da la gana, ¿Entendido?.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Pues atente a las consecuencias si después no puedes caminar más.'\n");
+                        pausa(4000);
+
+                        
+                }
+
+
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     // --- MÉTODO AUXILIAR PARA HACER PAUSAS ---
     // Este método detiene el programa los milisegundos que le digas
     public static void pausa(int milisegundos) {

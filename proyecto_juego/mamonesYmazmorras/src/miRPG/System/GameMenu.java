@@ -200,10 +200,9 @@ public class GameMenu {
         int eleccion = scanner.nextInt();
         scanner.nextLine();
 
-        // --- LA MAGIA DE LA PROBABILIDAD ---
+        // --- LA PROBABILIDAD ---
         // Math.random() genera un número entre 0.0 y 1.0. 
         // Si ponemos < 0.60, significa que hay un 60% de probabilidad de éxito (y 40% de fallar).
-        // ¡Puedes cambiar este número al porcentaje que tú quieras!
         boolean haySuerte = Math.random() < 0.50;
 
         if (haySuerte) {
@@ -227,8 +226,7 @@ public class GameMenu {
             System.out.println("De repente, una estantería cae al suelo haciendo un ruido ensordecedor.");
             System.out.println("¡El dependiente te ha visto! Tienes que salir corriendo con las manos vacías.");
         }
-        
-        // Pasamos al progreso 5 para bloquear el evento y que no farmee infinitamente 
+         
         miRPG.System.SaveManager.save(player);
         System.out.println("[ Partida Guardada - Mercadona completado ]");
     }
@@ -246,4 +244,44 @@ public class GameMenu {
     // Aprovechamos para guardar el progreso ya que el jugador ha ganado algo
         miRPG.System.SaveManager.save(player); 
     }
+    public static void eventoContenedorTecnologico(MainCharacterBase player, Skill opcionA, Skill opcionB, Scanner scanner) {
+        int intentosMaximos = 5;
+
+        System.out.println("\nObservas a un empleado de una tienda tecnológica tirar varias cajas a un contenedor y marcharse...");
+        System.out.println("1. Rebuscar en el contenedor");
+        System.out.println("2. Seguir de largo");
+        System.out.print("Elige una opción: ");
+        
+        int opcion = scanner.nextInt();
+        scanner.nextLine(); // Limpiar buffer
+
+        if (opcion == 1) {
+            for (int i = 1; i <= intentosMaximos; i++) {
+                System.out.println("\nRemueves cables pelados y piezas metálicas...");
+                
+                if (i < intentosMaximos) {
+                    System.out.println("No encuentras nada interesante.");
+                    System.out.println("1. Buscar con más detalle");
+                    System.out.println("2. Rendirse y salir del callejón");
+                    System.out.print("Elige una opción: ");
+                    
+                    int seguir = scanner.nextInt();
+                    scanner.nextLine(); // Limpiar buffer
+                    if (seguir != 1) {
+                        System.out.println("Decides que no vale la pena llenarse de grasa por chatarra.");
+                        return; 
+                    }
+                } else {
+                    // Éxito final en el quinto intento
+                    System.out.println("\n¡BINGO! Entre el fondo pegajoso del contenedor brilla una luz.");
+                    System.out.println("Al tocarlo, la luz se integra en tu sistema.");
+                    
+                    // Usamos el método genérico que definimos antes
+                    GameMenu.sortearHabilidad(player, opcionA, opcionB);
+                }
+            }
+        } else {
+            System.out.println("Sigues caminando. No eres un chatarrero... todavía.");
+        }
+}
 }
