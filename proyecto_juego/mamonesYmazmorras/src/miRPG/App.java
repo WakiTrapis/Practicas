@@ -1,11 +1,6 @@
 package miRPG;
 
 import java.util.Scanner;
-import miRPG.System.*;
-import miRPG.Base.*;
-import miRPG.UtilItem.*;
-import miRPG.Main_characters.*;
-import miRPG.Enemies.*;
 import miRPG.Skills_characters.*;
 import miRPG.System.GameMenu;
 import miRPG.Base.MainCharacterBase;
@@ -211,7 +206,7 @@ public class App {
         pausa(4000);
 //Combate con el Therian Iniciado       
         miRPG.Enemies.InitiatedTherian primerEnemigo = new miRPG.Enemies.InitiatedTherian();
-        miRPG.System.Combat.startCombat(mainSelect, primerEnemigo);
+        miRPG.System.Combat.startCombat(mainSelect, primerEnemigo,false);
         
         // --- POST-COMBATE (Resolución y revelación de la ruta) ---
         System.out.println("\nEl chaval gime como un perro apaleado y sale corriendo por la calle.");
@@ -294,7 +289,7 @@ public class App {
                 pausa(4000);
  //Combate con Mama Therian/segundo guardado       
                 miRPG.Enemies.MamaTherian segundoEnemigo = new miRPG.Enemies.MamaTherian();
-                miRPG.System.Combat.startCombat(mainSelect, segundoEnemigo);
+                miRPG.System.Combat.startCombat(mainSelect, segundoEnemigo, false);
 
                 mainSelect.gainXp(50);
 
@@ -448,7 +443,7 @@ public class App {
                             System.out.println("Abres la puerta y sin mas opciones te enfrentas al Therian Alpha.\n");
                             pausa(4000);
                             miRPG.Enemies.TherianAlpha tercerEnemigo = new miRPG.Enemies.TherianAlpha();
-                             miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo);
+                             miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo,false);
                             System.out.println("Salen corriendo balbuceando y aullando sin control .");
                             pausa(4000);
                             System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'La proxima vez que vuelvan.'\n");
@@ -474,32 +469,32 @@ public class App {
                             pausa(4000);
                             System.out.println("[" + mainSelect.getNameCharacter() + "]: '¿En que quedamos? Os voy a tener que enseñar a usar la lógica.'\n");
                             pausa(4000);
-                            miRPG.Enemies.TherianAlpha tercerEnemigo = new miRPG.Enemies.TherianAlpha();
-                                miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo);
+                            miRPG.Enemies.TherianBeta tercerEnemigo = new miRPG.Enemies.TherianBeta();
+                                miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo,false);
                             GameMenu.sortearHabilidad(mainSelect, new BlazingBuckle(), new EnlightenedReasoning());
                             GameMenu.menuIntermedio(mainSelect, scanner);
                             pausa(4000);
                             System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'La proxima vez que vuelvan.'\n");
                             pausa(4000);
-                            System.out.println("Sales del parque y por fin llegas al bendito Mercadona.'\n");
+                            System.out.println("Sales del parque y por fin llegas al bendito Mercadona.\n");
                             pausa(4000);
                             miRPG.System.GameMenu.shopGame(mainSelect, scanner);
                             } 
                     }
                     if(mainSelect.getProgresoHistoria() == 4 && decision3 == 2)  {
-                        System.out.println("Pasas del contenedor y sigues corriendo.'");
+                        System.out.println("Pasas del contenedor y sigues corriendo.");
                         pausa(4000);
-                        System.out.println("Los tienes pisándote los talones.'");
+                        System.out.println("Los tienes pisándote los talones.");
                         pausa(4000);
-                        System.out.println("Solo tienes que atravesar el parque para llegar al Mercadona.'");
+                        System.out.println("Solo tienes que atravesar el parque para llegar al Mercadona.");
                         pausa(4000);
-                        System.out.println("Pero cada vez te falta mas el aire, demasiada intensidad corriendo.'");
+                        System.out.println("Pero cada vez te falta mas el aire, demasiada intensidad corriendo.");
                         pausa(4000);
-                        System.out.println("Comienzas a buscar por todos lados algún escondite o algo para poder despistarlos.'");
+                        System.out.println("Comienzas a buscar por todos lados algún escondite o algo para poder despistarlos.");
                         pausa(4000);
-                        System.out.println("Observas una caseta de mantenimiento cerca de la salida del parque.'");
+                        System.out.println("Observas una caseta de mantenimiento cerca de la salida del parque.");
                         pausa(4000);
-                        System.out.println("A su vez ves una multitud aplaudiendo y elogiando algún tipo de espectáculo.'");
+                        System.out.println("A su vez ves una multitud aplaudiendo y elogiando algún tipo de espectáculo.");
                         pausa(4000);
                         System.out.println("[" + mainSelect.getNameCharacter() + "]: (Pensando) 'No es momento de parar.'\n");
                         pausa(4000);
@@ -513,9 +508,9 @@ public class App {
                         pausa(4000);
                         System.out.println("[ JARDINERO ]: '¿Que demonios pasa aquí?.'\n");
                         pausa(4000);
-                        System.out.println("[" + mainSelect.getNameCharacter() + "]: Lo siento, era cuestión de vida o muerte.'\n");
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Lo siento, era cuestión de vida o muerte.'\n");
                         pausa(4000);
-                        System.out.println("[" + mainSelect.getNameCharacter() + "]: Estaba tan tranquilo en mi casa cuando...'\n");
+                        System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Estaba tan tranquilo en mi casa cuando...'\n");
                         pausa(4000);
                         System.out.println("[ JARDINERO ]: 'No me cuentes más, solo tengo que ver el zoológico que hay ahi fuera montado.'\n");
                         pausa(4000);
@@ -560,26 +555,26 @@ public class App {
                         System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Luego no quiero gimoteo.'\n");
                         pausa(4000);
 
-                        miRPG.Enemies.TherianAlpha tercerEnemigo = new miRPG.Enemies.TherianAlpha();
-                        miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo);
+                        miRPG.Enemies.TherianBeta tercerEnemigo = new miRPG.Enemies.TherianBeta();
+                        miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo,false);
 
                         System.out.println("[" + mainSelect.getNameCharacter() + "]: 'La proxima vez que me hagáis correr por todo el barrio me encargare de que os metan a todos en una perrera psiquiátrica .'\n");
                         pausa(4000);
-                        System.out.println("Dejas a los chavales destrozados, le das las gracias al jardinero y sales del parque.'\n");
+                        System.out.println("Dejas a los chavales destrozados, le das las gracias al jardinero y sales del parque.\n");
                         pausa(4000);
-                        System.out.println("Al salir ves al otro lado de la calle el bendito Mercadona.'\n");
+                        System.out.println("Al salir ves al otro lado de la calle el bendito Mercadona.\n");
                         pausa(4000);
                     }
                 }
                 //Ruta 2/Atajo por callejón.
                 if (mainSelect.getProgresoHistoria() == 3 && decision2 == 2) {
-                    System.out.println("Prefieres no llamar la atención y te diriges hacia el callejón.'");
+                    System.out.println("Prefieres no llamar la atención y te diriges hacia el callejón.");
                         pausa(4000);
-                        System.out.println("Este esta lleno de basura, esta oscuro y el olor te eriza hasta los pelos de la nariz.'");
+                        System.out.println("Este esta lleno de basura, esta oscuro y el olor te eriza hasta los pelos de la nariz.");
                         pausa(4000);
-                        System.out.println("no muy avanzado en el callejón observas que una de las puertas traseras de una tienda de informática se abre.'");
+                        System.out.println("no muy avanzado en el callejón observas que una de las puertas traseras de una tienda de informática se abre.");
                         pausa(4000);
-                        System.out.println("Un empleado salia con unas grandes bolsas que deposito en el contenedor que había cerca.'");
+                        System.out.println("Un empleado salia con unas grandes bolsas que deposito en el contenedor que había cerca.");
                         pausa(4000);
                         System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Vaya, estas tiendas siempre tiran cosas que funcionan todavía.'\n");
                         pausa(4000);
@@ -589,7 +584,7 @@ public class App {
                         GameMenu.menuIntermedio(mainSelect, scanner);
 
 
-                        System.out.println("El dependiente de la tienda escucha ruidos fuera y decide salir a comprobar.'");
+                        System.out.println("El dependiente de la tienda escucha ruidos fuera y decide salir a comprobar.");
                         pausa(4000);
                         System.out.println("[ Dependiente ]: 'Muchacho, ¿qué haces aquí?'\n");
                         pausa(4000);
@@ -601,7 +596,7 @@ public class App {
                         pausa(4000);
                         System.out.println("[" + mainSelect.getNameCharacter() + "]: '¿Me ves con cara de enfermo mental?.'\n");
                         pausa(4000);
-                        System.out.println("[ Dependiente ]: 'Perdón, no queria ofenderte.'\n");
+                        System.out.println("[ Dependiente ]: 'Perdón, no quería ofenderte.'\n");
                         pausa(4000);
                         System.out.println("[" + mainSelect.getNameCharacter() + "]: 'Pues piense las cosas antes de decirlas hombre, ¿Tan mala cara tengo?.'\n");
                         pausa(4000);
@@ -612,6 +607,68 @@ public class App {
                         System.out.println("[ Dependiente ]: 'Pues atente a las consecuencias si después no puedes caminar más.'\n");
                         pausa(4000);
 
+                        miRPG.Enemies.Employee tercerEnemigo = new miRPG.Enemies.Employee();
+                        miRPG.System.Combat.startCombat(mainSelect, tercerEnemigo, true);
+
+                        System.out.println("\n[ Dependiente ]: 'Tienes madera de cazador, eso hay que admitirlo.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Ven, deja que te muestre algo.'\n");
+                        pausa(4000);
+                        System.out.println("\n[\" + mainSelect.getNameCharacter() + \"]: (Pensando) 'Que tipo más raro, no entiendo los cambios de humor.'\n");
+                        pausa(4000);
+                        System.out.println("1. Vas con el dependiente.");
+                        System.out.println("2. Pasas y continuas por los callejones.");
+                        System.out.print("Elige tu camino (1-2): ");
+                        int decision4 = scanner.nextInt();
+                        scanner.nextLine(); // Limpiar el buffer
+                        pausa(4000);
+
+                        if (decision4 == 1) {
+                            System.out.println("\n[\" + mainSelect.getNameCharacter() + \"]: 'esta bien te sigo.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Magnifica elección, no te arrepentirás.'\n");
+                        pausa(4000);
+                        System.out.println("[ Dependiente ]: 'Llevo mucho tiempo buscando a una persona que me ayude.'\n");
+                        pausa(4000);
+                        System.out.println("Sigues al dependiente dentro de la tienda.");
+                        pausa(4000);
+                        System.out.println("se acerca a una estantería de la trastienda.");
+                        pausa(4000);
+                        System.out.println("\n[ Dependiente ]: 'Lo que te voy a mostrar es alto secreto pero creo que eres el indicado y puedo confiar en ti.'\n");
+                        pausa(4000);
+                        System.out.println("El dependiente tira de uno de los lados de la estantería y esta se desliza por el suelo dejando ver una entrada oculta.");
+                        pausa(4000);
+                        System.out.println("Entráis y bajáis por una escalera.");
+                        pausa(4000);
+                        System.out.println("Conforme vas bajando comienzas a escuchar un murmullo cada vez mas nítidamente.");
+                        pausa(4000);
+                        System.out.println("\n[ Dependiente ]: 'No te asustes con lo que veas.'\n");
+                        pausa(4000);
+                        System.out.println("Conforme vas bajando comienzas a escuchar un murmullo cada vez mas nítidamente.");
+                        pausa(4000);
+                        System.out.println("Llegas a la puerta,el dependiente la abre y...");
+                        pausa(4000);
+                        System.out.println("Te quedas de piedra, los ojos como platos y la boca rozando tus rodillas.");
+                        pausa(4000);
+                        System.out.println("No sabes que sientes en este momento.");
+                        pausa(4000);
+                        System.out.println("Jaulas por todos lados, llenas de...");
+                        pausa(4000);
+                        System.out.println("\n[\" + mainSelect.getNameCharacter() + \"]: '¿Personas?.'\n");
+                        pausa(4000);
+                        System.out.println("\n[ Dependiente ]: 'No, enfermos.'\n");
+                        pausa(4000);
+                        System.out.println("\n[ Dependiente ]: 'Esto son therians, personas que se percibe como animales.'\n");
+                        pausa(4000);
+                        System.out.println("\n[ Dependiente ]: 'Creerás que esto que hago esta mal pero estos seres han llegado a olvidar su parte humana y se han descontrolado.'\n");
+                        pausa(4000);
+                        System.out.println("\n[ Dependiente ]: 'Yo me dedico a atraparlos.'\n");
+                        pausa(4000);
+                        System.out.println("\n[\" + mainSelect.getNameCharacter() + \"]: '¿Como el gobierno a permitido esto?.'\n");
+                        pausa(4000);
+                        System.out.println("\n[\" + mainSelect.getNameCharacter() + \"]: 'Quiero decir, como ha permitido en primer lugar que que adopten esta actitud y segundo perder la consciencia.'\n");
+                        pausa(4000);
+                        }       
                         
                 }
 

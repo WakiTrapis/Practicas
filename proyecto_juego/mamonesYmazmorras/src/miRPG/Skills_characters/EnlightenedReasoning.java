@@ -23,7 +23,7 @@ public class EnlightenedReasoning extends Skill {
         // Aplicamos el daño al objetivo diciéndole que es un ataque especial (true)
         target.receiveDamage(totalDamage, true);
         } else {
-        System.out.println("\n¡" + user.getNameCharacter() + " intenta lanzar un Comentario Tóxico contra " + target.getNameCharacter() + ", pero falla!");}
+        System.out.println("\n¡" + user.getNameCharacter() + " falla el raciocinio");}
     }
     // --- MÉTODO AUXILIAR PARA HACER PAUSAS ---
     // Este método detiene el programa los milisegundos que le digas

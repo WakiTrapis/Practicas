@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Combat {
     public static boolean MODO_RAPIDO = true;
 
-    public static void startCombat(GameCharacter player, GameCharacter enemy) {
+    public static boolean startCombat(GameCharacter player, GameCharacter enemy, boolean isStoryEvent) {
         Scanner scanner = new Scanner(System.in);
         boolean victoria = false;
 
@@ -47,22 +47,27 @@ public class Combat {
 
 // --- COMPROBACIÓN DEL RESULTADO ---.
             if (!player.isAlive()) {
-                System.out.println("\nTu cordura ha llegado a cero... Te dejas caer al suelo.");
-                pausa(2000);
-                System.out.println("Pero rendirse no es una opción en este mundo.");
-                System.out.println("Te levantas de nuevo. ¡La batalla se reinicia!");
-                pausa(3000);
+                if(isStoryEvent){
+                    System.out.println("Has caído en batalla.");
+                    return false;
+                } else{
+                    System.out.println("\nTu cordura ha llegado a cero... Te dejas caer al suelo.");
+                    pausa(2000);
+                    System.out.println("Pero rendirse no es una opción en este mundo.");
+                    System.out.println("Te levantas de nuevo. ¡La batalla se reinicia!");
+                    pausa(3000);
                 
                 // Curamos al 100% a los dos para reiniciar el combate
                 player.fullHeal();
                 enemy.fullHeal();
-                
+                }  
             } else if (!enemy.isAlive()) {
                 System.out.println("\n¡Has derrotado a " + enemy.getNameCharacter() + " y conservas tu cordura!");
                 victoria = true;
                 // ¡Rompemos el bucle y volvemos al Main!
             }
         }
+        return true;
     }
 
 // EL NUEVO MENÚ DEL JUGADOR.
