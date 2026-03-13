@@ -283,5 +283,64 @@ public class GameMenu {
         } else {
             System.out.println("Sigues caminando. No eres un chatarrero... todavía.");
         }
+    }
+
+    public static void minijuegoCruce(MainCharacterBase player) {
+    Scanner scanner = new Scanner(System.in);
+    String[] maniobras = {"A", "W", "D", "S"}; // A: Izquierda, W: Salto, D: Derecha, S: Agacharse
+    int pasosDados = 0;
+    int meta = 4; // Tienes que cruzar 4 carriles
+
+    System.out.println("\n-----------------------------------------------------------");
+    System.out.println("🚦 EL SEMÁFORO ESTÁ EN ROJO... PERO NO HAY TIEMPO QUE PERDER.");
+    System.out.println("El Mercadona brilla al otro lado con sus luces fluorescentes.");
+    System.out.println("-----------------------------------------------------------");
+    pausa(2000);
+
+    while (pasosDados < meta && player.isAlive()) {
+        // Elegimos una maniobra aleatoria
+        String teclaNecesaria = maniobras[(int)(Math.random() * maniobras.length)];
+        
+        System.out.println("\n[CARRIL " + (pasosDados + 1) + "]");
+        describirPeligro(teclaNecesaria); // Mensaje de ambiente
+
+        long inicio = System.currentTimeMillis();
+        String entrada = scanner.nextLine().toUpperCase();
+        long fin = System.currentTimeMillis();
+
+        // Ponemos un límite de 1.3 segundos para reaccionar
+        if (entrada.equals(teclaNecesaria) && (fin - inicio) <= 1300) {
+            pasosDados++;
+            System.out.println("✅ ¡Reflejos de lince! Logras avanzar al siguiente carril.");
+        } else {
+            System.out.println("❌ ¡PUM! Un repartidor no te ha visto. El impacto te desorienta.");
+            player.setCurrentHealth(player.getCurrentHealth() - 15);
+            System.out.println("Cordura actual: " + player.getCurrentHealth());
+            pausa(1000);
+        }
+    }
+
+    if (player.isAlive()) {
+        System.out.println("\n✨ ¡Tus pies tocan la acera! Lo has logrado.");
+    }
 }
+
+// Método auxiliar para dar variedad a los mensajes
+    private static void describirPeligro(String tecla) {
+        switch(tecla) {
+            case "A" -> System.out.print("¡Un autobús viene por la derecha! ¡Muévete a la IZQUIERDA [A]!: ");
+            case "W" -> System.out.print("¡Un charco de aceite resbaladizo! ¡SALTA [W]!: ");
+            case "D" -> System.out.print("¡Un camión de basura bloquea el paso! ¡ESQUIVA A LA DERECHA [D]!: ");
+            case "S" -> System.out.print("¡Una barra de metal sobresale de un camión! ¡AGÁCHATE [S]!: ");
+        }
+    }
+    // --- MÉTODO AUXILIAR PARA HACER PAUSAS ---
+    // Este método detiene el programa los milisegundos que le digas
+    public static void pausa(int milisegundos) {
+        try {
+            Thread.sleep(milisegundos);
+        } catch (InterruptedException e) {
+            System.out.println("Error en la pausa.");
+        }
+    }
 }

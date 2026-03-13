@@ -54,6 +54,7 @@ public abstract class GameCharacter implements Serializable {
         this.learnedSkills.add(newSkill);
         System.out.println(this.nameCharacter + " ha aprendido la habilidad: " + newSkill);
     }
+
     // Equipar una habilidad en uno de los 4 huecos (slot debe ser 1, 2, 3 o 4)
     public void equipSkill(Skill skillToEquip, int slot) {
         if (slot >= 1 && slot <= 4) {
@@ -64,6 +65,7 @@ public abstract class GameCharacter implements Serializable {
             System.out.println("Error: El hueco debe ser entre 1 y 4.");
         }
     }
+
     // Mostrar las habilidades equipadas actualmente
     public void showEquippedSkills() {
         System.out.println("\n--- Habilidades equipadas de " + this.nameCharacter + " ---");
@@ -81,6 +83,7 @@ public abstract class GameCharacter implements Serializable {
         this.inventory.add(newItem);
         System.out.println(this.nameCharacter + " ha añadido el item: " + newItem + " a su inventario.");
     }
+
     //borrar item que se haya usado
     public void removeItem(Item emptyItem) {   
         this.inventory.remove(emptyItem);
@@ -129,6 +132,7 @@ public abstract class GameCharacter implements Serializable {
     public boolean isAlive() {
         return this.currentHealth > 0;
     }
+    
     // Curación completa (para cuando reinicies el combate al morir)
     public void fullHeal() {
         this.currentHealth = this.stats.getMaxHealth();

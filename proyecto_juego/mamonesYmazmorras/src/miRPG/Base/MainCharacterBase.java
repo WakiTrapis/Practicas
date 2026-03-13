@@ -8,6 +8,7 @@ public abstract class MainCharacterBase extends GameCharacter {
     private int xpToNextLevel;
     private int lvlPoints;
     private int progresoHistoria;
+    private boolean hasMask;
 
     public MainCharacterBase(String name, Statistics stats) {
         super(name, stats);
@@ -17,7 +18,11 @@ public abstract class MainCharacterBase extends GameCharacter {
         this.xpToNextLevel = 100;
         this.lvlPoints = 0;
         this.progresoHistoria = 0;
+        this.hasMask = false;
     }
+
+    public boolean hasMask() {return hasMask;}
+    public void setHasMask(boolean hasMask) {this.hasMask = hasMask;}
 
     // Getters y Setters de nivel
     public int getLevel() {return level;}

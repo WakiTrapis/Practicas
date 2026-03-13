@@ -5,16 +5,15 @@ import miRPG.Base.Item;
 
 public class Monster extends Item {
     public Monster() {
-        // Suponiendo que tu clase Item pide un (Nombre, Descripción) en su super()
         super("Lata de Monster", "Bebida energética. Te altera el pulso pero te cura 50 PV.");
     }
 
     // Aquí le decimos qué pasa cuando alguien usa este objeto
     @Override
         public boolean use(GameCharacter target) {
-            // Obtenemos la vida actual y la vida máxima (¡OJO! Asegúrate de cómo se llaman tus métodos en Statistics)
+            // Obtenemos la vida actual y la vida máxima 
             double vidaActual = target.getCurrentHealth();
-            double vidaMaxima = target.getStats().getMaxHealth(); // Suponiendo que tienes un método para la vida máxima
+            double vidaMaxima = target.getStats().getMaxHealth();
 
             // 1. Comprobamos si ya estás a tope de vida
             if (vidaActual >= vidaMaxima) {
@@ -23,7 +22,7 @@ public class Monster extends Item {
                 return false; 
             }
 
-            // 2. Si llegamos aquí, es que nos falta vida. ¡Nos curamos!
+            // 2. Si llegamos aquí, es que nos falta vida.
             double cantidadCura = 50;
             double nuevaVida = vidaActual + cantidadCura;
 
